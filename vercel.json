@@ -3,6 +3,7 @@
     { "source": "/terms", "destination": "/" },
     { "source": "/privacy", "destination": "/" },
     { "source": "/help", "destination": "/" },
-    { "source": "/contact", "destination": "/" }
+    { "source": "/contact", "destination": "/" },
+    { "source": "/download", "destination": "/" }
   ]
 }

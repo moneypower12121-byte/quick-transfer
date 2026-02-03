@@ -6,6 +6,7 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import HelpCenter from './pages/HelpCenter';
 import Contact from './pages/Contact';
+import Download from './pages/Download';
 
 // Simple router based on pathname
 const getPage = () => {
@@ -19,6 +20,8 @@ const getPage = () => {
       return <HelpCenter />;
     case '/contact':
       return <Contact />;
+    case '/download':
+      return <Download />;
     default:
       return <App />;
   }
