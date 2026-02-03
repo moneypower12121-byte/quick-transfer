@@ -231,13 +231,7 @@ const App: React.FC = () => {
       {/* Demo Ad Banner - Above Footer */}
       <div className="bg-white dark:bg-slate-800/50 py-6 border-t border-gray-100 dark:border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 flex justify-center">
-          {/* Mobile: 320x50, Desktop: 728x90 */}
-          <div className="md:hidden">
-            <DemoAd size="320x50" label="Footer Banner Mobile" />
-          </div>
-          <div className="hidden md:block">
-            <DemoAd size="728x90" label="Footer Banner" />
-          </div>
+          <DemoAd size="728x90" mobileSize="320x50" />
         </div>
       </div>
 
