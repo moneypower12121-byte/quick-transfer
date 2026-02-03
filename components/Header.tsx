@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Send, Menu, Moon, Sun } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, Menu, Moon, Sun, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -8,6 +8,7 @@ import { useTheme } from '../context/ThemeContext';
 const Header: React.FC = () => {
   const { t } = useLanguage();
   const { isDark, toggleTheme } = useTheme();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-pink-100 dark:border-slate-700/50">
@@ -40,11 +41,54 @@ const Header: React.FC = () => {
             )}
           </button>
           <LanguageSelector />
-          <button className="md:hidden">
-            <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+          <button 
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            )}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-700 animate-in slide-in-from-top-2 duration-200">
+          <nav className="flex flex-col px-4 py-4 gap-1">
+            <a 
+              href="/" 
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-500/10 font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.transfer}
+            </a>
+            <a 
+              href="/help" 
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 font-medium transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.howItWorks}
+            </a>
+            <a 
+              href="/privacy" 
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 font-medium transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.privacy}
+            </a>
+            <a 
+              href="/contact" 
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 font-medium transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.contact}
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
