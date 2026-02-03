@@ -272,8 +272,6 @@ const App: React.FC = () => {
               </div>
               <span className="font-bold text-gray-400 dark:text-gray-500">Quick<span className="text-red-400">Transfer</span></span>
             </div>
-              <span className="font-bold dark:text-white">QuickTransfer</span>
-            </div>
             <div className="flex gap-8 text-sm text-gray-400 dark:text-gray-400 font-medium">
               <a href="/help" className="hover:text-red-500 dark:hover:text-red-400 transition-colors">{t.howItWorks}</a>
               <a href="/terms" className="hover:text-red-500 dark:hover:text-red-400 transition-colors">{t.terms}</a>
