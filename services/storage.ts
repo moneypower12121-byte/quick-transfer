@@ -1,26 +1,43 @@
-
 import { TransferData } from '../types';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set, get, child } from 'firebase/database';
 
-const STORAGE_KEY = 'quicktransfer_data';
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDdy-_Mh4x2TbkkJONrDwsLvbH8n33b-D4",
+  authDomain: "quicktransfer-af521.firebaseapp.com",
+  databaseURL: "https://quicktransfer-af521-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "quicktransfer-af521",
+  storageBucket: "quicktransfer-af521.firebasestorage.app",
+  messagingSenderId: "677341634923",
+  appId: "1:677341634923:web:28d7fbd1be8699ab7eac2e",
+  measurementId: "G-HC2Q1XVX8B"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 export const generateCode = (): string => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-export const saveData = (data: TransferData): void => {
-  const existing = getStore();
-  existing.push(data);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+export const saveData = async (data: TransferData): Promise<void> => {
+  const transferRef = ref(database, 'transfers/' + data.code);
+  await set(transferRef, data);
 };
 
-export const getDataByCode = (code: string): TransferData | undefined => {
-  const store = getStore();
-  const now = Date.now();
-  // Filter out expired (10 min expiry for demo)
-  return store.find(item => item.code === code && item.expiresAt > now);
-};
-
-const getStore = (): TransferData[] => {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
+export const getDataByCode = async (code: string): Promise<TransferData | undefined> => {
+  const dbRef = ref(database);
+  const snapshot = await get(child(dbRef, 'transfers/' + code));
+  
+  if (snapshot.exists()) {
+    const data = snapshot.val() as TransferData;
+    const now = Date.now();
+    // Check if not expired (10 min expiry)
+    if (data.expiresAt > now) {
+      return data;
+    }
+  }
+  return undefined;
 };

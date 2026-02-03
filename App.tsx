@@ -18,10 +18,10 @@ const App: React.FC = () => {
     setAppState('SENDING');
     setError(null);
     
-    // Convert to base64 for local storage demo simulation
+    // Convert to base64 for cloud storage
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => {
+    reader.onload = async () => {
       const transfer: TransferData = {
         id: crypto.randomUUID(),
         code: generateCode(),
@@ -33,13 +33,15 @@ const App: React.FC = () => {
         expiresAt: Date.now() + 10 * 60 * 1000, // 10 minutes
       };
 
-      // Simulate network delay
-      setTimeout(() => {
-        saveData(transfer);
+      try {
+        await saveData(transfer);
         setCurrentData(transfer);
         setMode('SENT');
         setAppState('COMPLETE');
-      }, 1500);
+      } catch (err) {
+        setError("Failed to upload file. Please try again.");
+        setAppState('IDLE');
+      }
     };
     reader.onerror = () => {
       setError("Failed to read file");
@@ -47,13 +49,12 @@ const App: React.FC = () => {
     };
   };
 
-  const handleReceive = (code: string) => {
+  const handleReceive = async (code: string) => {
     setAppState('RECEIVING');
     setError(null);
 
-    // Simulate network delay
-    setTimeout(() => {
-      const data = getDataByCode(code);
+    try {
+      const data = await getDataByCode(code);
       if (data) {
         setCurrentData(data);
         setMode('RECEIVED');
@@ -62,7 +63,10 @@ const App: React.FC = () => {
         setError("Invalid or expired key. Please try again.");
         setAppState('IDLE');
       }
-    }, 1500);
+    } catch (err) {
+      setError("Failed to retrieve data. Please try again.");
+      setAppState('IDLE');
+    }
   };
 
   const reset = () => {
