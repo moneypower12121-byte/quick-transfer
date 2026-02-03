@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Clock, Zap } from 'lucide-react';
 
 interface AdOverlayProps {
@@ -9,6 +9,7 @@ interface AdOverlayProps {
 const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
+  const adContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -23,6 +24,33 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
     }, 1000);
 
     return () => clearInterval(timer);
+  }, []);
+
+  // Load the ad script
+  useEffect(() => {
+    if (adContainerRef.current) {
+      // Set atOptions on window
+      (window as any).atOptions = {
+        'key': '522d4ea741d98fdef7a995b1e977847e',
+        'format': 'iframe',
+        'height': 250,
+        'width': 300,
+        'params': {}
+      };
+
+      // Create and append the script
+      const script = document.createElement('script');
+      script.src = 'https://www.highperformanceformat.com/522d4ea741d98fdef7a995b1e977847e/invoke.js';
+      script.async = true;
+      adContainerRef.current.appendChild(script);
+
+      return () => {
+        // Cleanup
+        if (adContainerRef.current) {
+          adContainerRef.current.innerHTML = '';
+        }
+      };
+    }
   }, []);
 
   return (
@@ -51,29 +79,15 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
           </div>
         </div>
 
-        {/* Ad Content - Placeholder Ad */}
+        {/* Ad Content - Real Ad */}
         <div className="p-6">
-          <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 text-center">
-            {/* Sample Ad 1 */}
-            <div className="space-y-4">
-              <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl mx-auto flex items-center justify-center">
-                <Zap className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-black text-gray-800">
-                Quick Transfer Pro
-              </h3>
-              <p className="text-gray-500">
-                Upgrade to Pro for unlimited transfers, no ads, and faster speeds!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
-                <button className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all">
-                  Get Pro - $4.99/mo
-                </button>
-                <button className="bg-gray-200 text-gray-600 px-6 py-3 rounded-xl font-bold hover:bg-gray-300 transition-all">
-                  Learn More
-                </button>
-              </div>
-            </div>
+          <div className="flex justify-center items-center min-h-[250px]">
+            {/* Ad Container - 300x250 */}
+            <div 
+              ref={adContainerRef} 
+              className="flex justify-center items-center"
+              style={{ minWidth: '300px', minHeight: '250px' }}
+            />
           </div>
 
           {/* Ad Footer */}
