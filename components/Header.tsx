@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Send, Menu, Moon, Sun, X } from 'lucide-react';
+import { Zap, Menu, Moon, Sun, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -13,12 +13,18 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-pink-100 dark:border-slate-700/50">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="bg-gradient-to-br from-red-500 to-pink-500 p-1.5 rounded-lg shadow-lg shadow-red-500/20">
-            <Send className="w-5 h-5 text-white transform rotate-45" />
+        <a href="/" className="flex items-center gap-2.5 group">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity" />
+            <div className="relative bg-gradient-to-br from-red-500 via-pink-500 to-red-600 p-2 rounded-xl shadow-lg">
+              <Zap className="w-5 h-5 text-white" fill="white" />
+            </div>
           </div>
-          <span className="text-xl font-bold text-gray-800 dark:text-white tracking-tight">QuickTransfer</span>
-        </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-black text-gray-800 dark:text-white tracking-tight leading-none">Quick<span className="text-red-500">Transfer</span></span>
+            <span className="text-[10px] font-medium text-gray-400 dark:text-gray-500 tracking-widest uppercase">Fast & Secure</span>
+          </div>
+        </a>
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
           <a href="/" className="text-red-500 dark:text-red-400 border-b-2 border-red-500 dark:border-red-400 pb-1">{t.transfer}</a>
