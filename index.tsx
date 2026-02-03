@@ -7,6 +7,7 @@ import Privacy from './pages/Privacy';
 import HelpCenter from './pages/HelpCenter';
 import Contact from './pages/Contact';
 import Download from './pages/Download';
+import { LanguageProvider } from './context/LanguageContext';
 
 // Simple router based on pathname
 const getPage = () => {
@@ -35,6 +36,8 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    {getPage()}
+    <LanguageProvider>
+      {getPage()}
+    </LanguageProvider>
   </React.StrictMode>
 );

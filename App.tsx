@@ -6,9 +6,11 @@ import ResultView from './components/ResultView';
 import AdOverlay from './components/AdOverlay';
 import { AppState, TransferData } from './types';
 import { generateCode, saveData, getDataByCode } from './services/storage';
+import { useLanguage } from './context/LanguageContext';
 import { AlertCircle, HelpCircle, Send, X } from 'lucide-react';
 
 const App: React.FC = () => {
+  const { t } = useLanguage();
   const [appState, setAppState] = useState<AppState>('IDLE');
   const [currentData, setCurrentData] = useState<TransferData | undefined>();
   const [error, setError] = useState<string | null>(null);
@@ -56,12 +58,12 @@ const App: React.FC = () => {
         setMode('SENT');
         setAppState('COMPLETE');
       } catch (err) {
-        setError("Failed to upload file. Please try again.");
+        setError(t.failedUpload);
         setAppState('IDLE');
       }
     };
     reader.onerror = () => {
-      setError("Failed to read file");
+      setError(t.failedRead);
       setAppState('IDLE');
     };
   };
@@ -90,11 +92,11 @@ const App: React.FC = () => {
         setMode('RECEIVED');
         setAppState('COMPLETE');
       } else {
-        setError("Invalid or expired key. Please try again.");
+        setError(t.invalidCode);
         setAppState('IDLE');
       }
     } catch (err) {
-      setError("Failed to retrieve data. Please try again.");
+      setError(t.invalidCode);
       setAppState('IDLE');
     }
   };
@@ -142,14 +144,14 @@ const App: React.FC = () => {
                 <div className="max-w-md">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="bg-red-500 w-8 h-2 rounded-full" />
-                    <span className="text-red-500 font-bold uppercase tracking-wider text-sm">Fast & Secure</span>
+                    <span className="text-red-500 font-bold uppercase tracking-wider text-sm">{t.fastSecure}</span>
                   </div>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 leading-tight mb-6">
-                    Share anything, <br />
-                    <span className="text-red-500">Instantly.</span>
+                    {t.shareAnything} <br />
+                    <span className="text-red-500">{t.instantly}</span>
                   </h1>
                   <p className="text-lg text-gray-500 leading-relaxed mb-8">
-                    The easiest way to send files across devices. Just upload your content, get a 6-digit key, and share it. No sign-up required.
+                    {t.heroDescription}
                   </p>
                 </div>
 
@@ -204,7 +206,7 @@ const App: React.FC = () => {
       <a href="/help" className="fixed bottom-6 right-6 bg-red-500 text-white p-4 rounded-full shadow-2xl hover:bg-red-600 transition-all flex items-center gap-2 group z-50">
         <HelpCircle className="w-6 h-6" />
         <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold whitespace-nowrap">
-          Need Help?
+          {t.needHelp}
         </span>
       </a>
 
@@ -216,12 +218,12 @@ const App: React.FC = () => {
              <span className="font-bold">QuickTransfer</span>
            </div>
            <div className="flex gap-8 text-sm text-gray-400 font-medium">
-             <a href="/terms" className="hover:text-red-500">Terms</a>
-             <a href="/privacy" className="hover:text-red-500">Privacy</a>
-             <a href="/help" className="hover:text-red-500">Help Center</a>
-             <a href="/contact" className="hover:text-red-500">Contact</a>
+             <a href="/terms" className="hover:text-red-500">{t.terms}</a>
+             <a href="/privacy" className="hover:text-red-500">{t.privacy}</a>
+             <a href="/help" className="hover:text-red-500">{t.helpCenter}</a>
+             <a href="/contact" className="hover:text-red-500">{t.contact}</a>
            </div>
-           <p className="text-xs text-gray-300">© 2026 QuickTransfer Inc. All rights reserved.</p>
+           <p className="text-xs text-gray-300">© 2026 QuickTransfer Inc. {t.allRightsReserved}</p>
         </div>
       </footer>
     </div>

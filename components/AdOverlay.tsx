@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Clock, Zap } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface AdOverlayProps {
   onComplete: () => void;
@@ -7,6 +8,7 @@ interface AdOverlayProps {
 }
 
 const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
+  const { t } = useLanguage();
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
   const adContainerRef = useRef<HTMLDivElement>(null);
@@ -60,7 +62,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
         <div className="bg-gradient-to-r from-red-500 to-pink-500 p-4 flex items-center justify-between">
           <div className="flex items-center gap-2 text-white">
             <Zap className="w-5 h-5" />
-            <span className="font-bold text-sm">Sponsored</span>
+            <span className="font-bold text-sm">{t.sponsored}</span>
           </div>
           <div className="flex items-center gap-3">
             {!canSkip ? (
@@ -73,7 +75,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
                 onClick={onComplete}
                 className="flex items-center gap-1 bg-white text-red-500 px-4 py-1.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-all"
               >
-                Skip <X className="w-4 h-4" />
+                {t.skip} <X className="w-4 h-4" />
               </button>
             )}
           </div>
@@ -94,8 +96,8 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
           <div className="mt-4 text-center">
             <p className="text-xs text-gray-400">
               {adType === 'send' 
-                ? 'Your file is being prepared...' 
-                : 'Fetching your file...'}
+                ? t.preparingFile 
+                : t.fetchingFile}
             </p>
             <div className="mt-2 h-1 bg-gray-200 rounded-full overflow-hidden">
               <div 

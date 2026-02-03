@@ -1,6 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { Plus, Download, FileText, X, Loader2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TransferCardProps {
   type: 'send' | 'receive';
@@ -10,6 +11,7 @@ interface TransferCardProps {
 }
 
 const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, loading }) => {
+  const { t } = useLanguage();
   const [code, setCode] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -35,7 +37,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
   if (type === 'send') {
     return (
       <div className="bg-white rounded-2xl p-8 custom-shadow flex flex-col gap-6 transition-all hover:scale-[1.01] w-full max-w-md">
-        <h2 className="text-2xl font-bold text-gray-800">Send</h2>
+        <h2 className="text-2xl font-bold text-gray-800">{t.sendFile}</h2>
         
         {!selectedFile ? (
           <div 
@@ -77,7 +79,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
           }`}
         >
           {loading && <Loader2 className="w-5 h-5 animate-spin" />}
-          {loading ? 'Processing...' : 'Send'}
+          {loading ? t.sending : t.sendFile.split(' ')[0]}
         </button>
       </div>
     );
@@ -85,13 +87,13 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
 
   return (
     <div className="bg-white rounded-2xl p-8 custom-shadow flex flex-col gap-6 transition-all hover:scale-[1.01] w-full max-w-md">
-      <h2 className="text-2xl font-bold text-gray-800">Receive</h2>
+      <h2 className="text-2xl font-bold text-gray-800">{t.receiveFile}</h2>
       
       <div className="relative group">
         <input 
           type="text"
           maxLength={6}
-          placeholder="Enter 6-digit key"
+          placeholder={t.enterCode}
           className="w-full bg-gray-50 border border-gray-100 rounded-xl py-4 px-5 text-xl font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-red-100 focus:bg-white transition-all text-gray-700"
           value={code}
           onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
@@ -107,7 +109,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
         }`}
       >
         {loading && <Loader2 className="w-5 h-5 animate-spin" />}
-        {loading ? 'Finding...' : 'Receive'}
+        {loading ? t.receiving : t.receive}
       </button>
     </div>
   );
