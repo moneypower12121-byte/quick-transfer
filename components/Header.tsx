@@ -1,33 +1,47 @@
 
 import React from 'react';
-import { Send, Menu } from 'lucide-react';
+import { Send, Menu, Moon, Sun } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 
 const Header: React.FC = () => {
   const { t } = useLanguage();
+  const { isDark, toggleTheme } = useTheme();
   
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-pink-100">
+    <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-pink-100 dark:border-slate-700/50">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="bg-red-500 p-1.5 rounded-lg">
+          <div className="bg-gradient-to-br from-red-500 to-pink-500 p-1.5 rounded-lg shadow-lg shadow-red-500/20">
             <Send className="w-5 h-5 text-white transform rotate-45" />
           </div>
-          <span className="text-xl font-bold text-gray-800 tracking-tight">QuickTransfer</span>
+          <span className="text-xl font-bold text-gray-800 dark:text-white tracking-tight">QuickTransfer</span>
         </div>
         
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
-          <a href="/" className="text-red-500 border-b-2 border-red-500 pb-1">{t.transfer}</a>
-          <a href="/help" className="hover:text-red-500 transition-colors">{t.howItWorks}</a>
-          <a href="/privacy" className="hover:text-red-500 transition-colors">{t.privacy}</a>
-          <a href="/contact" className="hover:text-red-500 transition-colors">{t.contact}</a>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
+          <a href="/" className="text-red-500 dark:text-red-400 border-b-2 border-red-500 dark:border-red-400 pb-1">{t.transfer}</a>
+          <a href="/help" className="hover:text-red-500 dark:hover:text-red-400 transition-colors">{t.howItWorks}</a>
+          <a href="/privacy" className="hover:text-red-500 dark:hover:text-red-400 transition-colors">{t.privacy}</a>
+          <a href="/contact" className="hover:text-red-500 dark:hover:text-red-400 transition-colors">{t.contact}</a>
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          {/* Dark Mode Toggle */}
+          <button 
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 transition-all hover:scale-105"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? (
+              <Sun className="w-5 h-5 text-yellow-500" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-600" />
+            )}
+          </button>
           <LanguageSelector />
           <button className="md:hidden">
-            <Menu className="w-6 h-6 text-gray-600" />
+            <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
           </button>
         </div>
       </div>

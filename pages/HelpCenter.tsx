@@ -1,7 +1,10 @@
 import React from 'react';
-import { Send, HelpCircle, Upload, Download, Clock, Key, Shield, Zap, MessageCircle } from 'lucide-react';
+import { Send, HelpCircle, Upload, Download, Clock, Key, Shield, Zap, MessageCircle, Moon, Sun } from 'lucide-react';
+import DemoAd from '../components/DemoAd';
+import { useTheme } from '../context/ThemeContext';
 
 const HelpCenter: React.FC = () => {
+  const { isDark, toggleTheme } = useTheme();
   const faqs = [
     {
       icon: <Upload className="w-5 h-5 text-blue-500" />,
@@ -41,31 +44,39 @@ const HelpCenter: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-pink-100">
+      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-pink-100 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
             <div className="bg-red-500 p-1.5 rounded-lg">
               <Send className="w-5 h-5 text-white transform rotate-45" />
             </div>
-            <span className="text-xl font-bold text-gray-800">QuickTransfer</span>
+            <span className="text-xl font-bold text-gray-800 dark:text-white">QuickTransfer</span>
           </a>
-          <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
+            </button>
+            <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
+          </div>
         </div>
       </header>
 
       {/* Content */}
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-12">
           <div className="flex items-center gap-3 mb-6">
-            <div className="bg-red-100 p-3 rounded-xl">
+            <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-xl">
               <HelpCircle className="w-8 h-8 text-red-500" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-black text-gray-800">Help Center</h1>
+            <h1 className="text-3xl md:text-4xl font-black text-gray-800 dark:text-white">Help Center</h1>
           </div>
           
-          <p className="text-gray-500 mb-8 text-lg">
+          <p className="text-gray-500 dark:text-gray-400 mb-8 text-lg">
             Find answers to common questions about using QuickTransfer.
           </p>
 
@@ -89,17 +100,17 @@ const HelpCenter: React.FC = () => {
           </div>
 
           {/* FAQs */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Frequently Asked Questions</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-100 rounded-2xl p-5 hover:shadow-md transition-all">
+              <div key={index} className="border border-gray-100 dark:border-gray-700 rounded-2xl p-5 hover:shadow-md transition-all">
                 <div className="flex items-start gap-3">
-                  <div className="bg-gray-100 p-2 rounded-lg mt-1">
+                  <div className="bg-gray-100 dark:bg-gray-700 p-2 rounded-lg mt-1">
                     {faq.icon}
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-2">{faq.question}</h3>
-                    <p className="text-gray-600">{faq.answer}</p>
+                    <h3 className="font-bold text-gray-800 dark:text-white mb-2">{faq.question}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">{faq.answer}</p>
                   </div>
                 </div>
               </div>
@@ -107,9 +118,9 @@ const HelpCenter: React.FC = () => {
           </div>
 
           {/* Still Need Help */}
-          <div className="mt-10 bg-gray-50 rounded-2xl p-6 text-center">
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Still need help?</h3>
-            <p className="text-gray-500 mb-4">Can't find what you're looking for? Contact our support team.</p>
+          <div className="mt-10 bg-gray-50 dark:bg-gray-700 rounded-2xl p-6 text-center">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Still need help?</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-4">Can't find what you're looking for? Contact our support team.</p>
             <a 
               href="/contact" 
               className="inline-block bg-red-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-600 transition-all"
@@ -117,12 +128,17 @@ const HelpCenter: React.FC = () => {
               Contact Support
             </a>
           </div>
+          
+          {/* Demo Ad - Sidebar Style */}
+          <div className="mt-8 flex justify-center">
+            <DemoAd size="300x250" label="Help Page Sidebar" />
+          </div>
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-50 py-8 border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 text-sm">
+      <footer className="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-100 dark:border-gray-800">
+        <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 dark:text-gray-500 text-sm">
           © 2026 QuickTransfer. All rights reserved.
         </div>
       </footer>

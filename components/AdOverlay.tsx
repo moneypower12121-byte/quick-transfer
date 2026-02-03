@@ -11,10 +11,14 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
   const { t } = useLanguage();
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
+  const [adLoaded, setAdLoaded] = useState(false);
   const adContainerRef = useRef<HTMLDivElement>(null);
   const adLoadedRef = useRef(false);
 
+  // Start countdown only after ad is loaded
   useEffect(() => {
+    if (!adLoaded) return;
+    
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
@@ -27,7 +31,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [adLoaded]);
 
   // Load the ad script immediately
   useEffect(() => {
@@ -46,7 +50,19 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
       // Create and append the script immediately
       const script = document.createElement('script');
       script.src = 'https://www.highperformanceformat.com/522d4ea741d98fdef7a995b1e977847e/invoke.js';
-      script.async = false; // Load synchronously for faster display
+      script.async = false;
+      
+      // Mark ad as loaded when script loads
+      script.onload = () => {
+        // Give a small delay for iframe to render
+        setTimeout(() => setAdLoaded(true), 500);
+      };
+      
+      // If script fails, still allow skip after delay
+      script.onerror = () => {
+        setTimeout(() => setAdLoaded(true), 1000);
+      };
+      
       adContainerRef.current.appendChild(script);
 
       return () => {
@@ -60,7 +76,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
+      <div className="bg-white dark:bg-slate-800 dark:border dark:border-white/10 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
         {/* Ad Header */}
         <div className="bg-gradient-to-r from-red-500 to-pink-500 p-4 flex items-center justify-between">
           <div className="flex items-center gap-2 text-white">
@@ -86,7 +102,14 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
 
         {/* Ad Content - Real Ad */}
         <div className="p-6">
-          <div className="flex justify-center items-center min-h-[250px]">
+          <div className="flex justify-center items-center min-h-[250px] relative">
+            {/* Loading indicator while ad loads */}
+            {!adLoaded && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 dark:bg-slate-700/50 rounded-xl">
+                <div className="w-10 h-10 border-4 border-red-200 dark:border-red-500/30 border-t-red-500 rounded-full animate-spin mb-3"></div>
+                <p className="text-sm text-gray-500 dark:text-gray-300">Loading...</p>
+              </div>
+            )}
             {/* Ad Container - 300x250 */}
             <div 
               ref={adContainerRef} 
@@ -97,15 +120,15 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
 
           {/* Ad Footer */}
           <div className="mt-4 text-center">
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-400 dark:text-gray-400">
               {adType === 'send' 
                 ? t.preparingFile 
                 : t.fetchingFile}
             </p>
-            <div className="mt-2 h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="mt-2 h-1 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-gradient-to-r from-red-500 to-pink-500 transition-all duration-1000"
-                style={{ width: `${((5 - countdown) / 5) * 100}%` }}
+                style={{ width: adLoaded ? `${((5 - countdown) / 5) * 100}%` : '0%' }}
               />
             </div>
           </div>

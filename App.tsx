@@ -4,6 +4,7 @@ import Header from './components/Header';
 import TransferCard from './components/TransferCard';
 import ResultView from './components/ResultView';
 import AdOverlay from './components/AdOverlay';
+import DemoAd from './components/DemoAd';
 import { AppState, TransferData } from './types';
 import { generateCode, saveData, getDataByCode } from './services/storage';
 import { useLanguage } from './context/LanguageContext';
@@ -118,7 +119,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col hero-gradient">
+    <div className="min-h-screen flex flex-col hero-gradient dark:bg-slate-900">
       {/* Ad Overlay */}
       {showAd && (
         <AdOverlay onComplete={handleAdComplete} adType={adType} />
@@ -128,8 +129,9 @@ const App: React.FC = () => {
       
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-1/4 -left-20 w-64 h-64 bg-red-100 rounded-full blur-3xl opacity-50 -z-10 animate-pulse" />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-pink-100 rounded-full blur-3xl opacity-50 -z-10" />
+        <div className="absolute top-1/4 -left-20 w-64 h-64 bg-red-100 dark:bg-red-500/10 rounded-full blur-3xl opacity-50 -z-10 animate-pulse" />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-pink-100 dark:bg-purple-500/10 rounded-full blur-3xl opacity-50 -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-transparent dark:bg-blue-500/5 rounded-full blur-3xl opacity-0 dark:opacity-100 -z-10" />
 
         <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
@@ -146,29 +148,29 @@ const App: React.FC = () => {
                     <div className="bg-red-500 w-8 h-2 rounded-full" />
                     <span className="text-red-500 font-bold uppercase tracking-wider text-sm">{t.fastSecure}</span>
                   </div>
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 leading-tight mb-6">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 dark:text-white leading-tight mb-6">
                     {t.shareAnything} <br />
-                    <span className="text-red-500">{t.instantly}</span>
+                    <span className="text-red-500 dark:text-red-400">{t.instantly}</span>
                   </h1>
-                  <p className="text-lg text-gray-500 leading-relaxed mb-4">
+                  <p className="text-lg text-gray-500 dark:text-gray-300 leading-relaxed mb-4">
                     {t.heroDescription}
                   </p>
-                  <p className="text-sm font-semibold text-gray-400 tracking-wide">
+                  <p className="text-sm font-semibold text-gray-400 dark:text-gray-400 tracking-wide">
                     {t.trustLine}
                   </p>
                 </div>
 
                 {/* Simulated UI Snapshot (as seen in prompt image) */}
                 <div className="relative mt-8 hidden sm:block">
-                  <div className="bg-white/60 backdrop-blur-sm p-4 rounded-2xl custom-shadow border border-white/40 flex items-center gap-4 w-fit">
-                    <div className="bg-red-50 p-2 rounded-xl">
-                      <Send className="w-6 h-6 text-red-500" />
+                  <div className="bg-white/60 dark:bg-slate-800/60 dark:glass-effect backdrop-blur-sm p-4 rounded-2xl custom-shadow border border-white/40 dark:border-white/10 flex items-center gap-4 w-fit">
+                    <div className="bg-red-50 dark:bg-red-500/20 p-2 rounded-xl">
+                      <Send className="w-6 h-6 text-red-500 dark:text-red-400" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-gray-700">Project_Final_v2.zip</p>
-                      <p className="text-xs text-gray-400">12.4 MB • Sent 2m ago</p>
+                      <p className="text-sm font-bold text-gray-700 dark:text-gray-100">Project_Final_v2.zip</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-400">12.4 MB • Sent 2m ago</p>
                     </div>
-                    <div className="ml-4 bg-gray-100 px-3 py-1 rounded-lg text-xs font-mono font-bold text-gray-600">
+                    <div className="ml-4 bg-gray-100 dark:bg-slate-700 px-3 py-1 rounded-lg text-xs font-mono font-bold text-gray-600 dark:text-gray-200">
                       492 103
                     </div>
                   </div>
@@ -178,10 +180,10 @@ const App: React.FC = () => {
               {/* Right Side: Action Cards */}
               <section className="flex flex-col gap-6 order-1 lg:order-2">
                 {error && (
-                  <div className="bg-red-50 border border-red-100 text-red-600 p-4 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2">
+                  <div className="bg-red-50 dark:bg-red-900/30 border border-red-100 dark:border-red-800 text-red-600 dark:text-red-400 p-4 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2">
                     <AlertCircle className="w-5 h-5 flex-shrink-0" />
                     <p className="text-sm font-medium">{error}</p>
-                    <button onClick={() => setError(null)} className="ml-auto text-red-400 hover:text-red-600">
+                    <button onClick={() => setError(null)} className="ml-auto text-red-400 hover:text-red-600 dark:text-red-500 dark:hover:text-red-300">
                       <X className="w-4 h-4" />
                     </button>
                   </div>
@@ -213,21 +215,28 @@ const App: React.FC = () => {
         </span>
       </a>
 
+      {/* Demo Ad Banner - Above Footer */}
+      <div className="bg-white dark:bg-slate-800/50 py-6 border-t border-gray-100 dark:border-slate-700/50">
+        <div className="max-w-7xl mx-auto px-4 flex justify-center">
+          <DemoAd size="728x90" label="Footer Banner" />
+        </div>
+      </div>
+
       {/* Footer Meta */}
-      <footer className="bg-gray-50/50 py-12 border-t border-gray-100">
+      <footer className="bg-gray-50/50 dark:bg-slate-900/80 py-12 border-t border-gray-100 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
            <div className="flex items-center gap-2 grayscale opacity-50">
-             <Send className="w-5 h-5" />
-             <span className="font-bold">QuickTransfer</span>
+             <Send className="w-5 h-5 dark:text-white" />
+             <span className="font-bold dark:text-white">QuickTransfer</span>
            </div>
-           <div className="flex gap-8 text-sm text-gray-400 font-medium">
-             <a href="/help" className="hover:text-red-500">{t.howItWorks}</a>
-             <a href="/terms" className="hover:text-red-500">{t.terms}</a>
-             <a href="/privacy" className="hover:text-red-500">{t.privacy}</a>
-             <a href="/help" className="hover:text-red-500">{t.helpCenter}</a>
-             <a href="/contact" className="hover:text-red-500">{t.contact}</a>
+           <div className="flex gap-8 text-sm text-gray-400 dark:text-gray-400 font-medium">
+             <a href="/help" className="hover:text-red-500 dark:hover:text-red-400">{t.howItWorks}</a>
+             <a href="/terms" className="hover:text-red-500 dark:hover:text-red-400">{t.terms}</a>
+             <a href="/privacy" className="hover:text-red-500 dark:hover:text-red-400">{t.privacy}</a>
+             <a href="/help" className="hover:text-red-500 dark:hover:text-red-400">{t.helpCenter}</a>
+             <a href="/contact" className="hover:text-red-500 dark:hover:text-red-400">{t.contact}</a>
            </div>
-           <p className="text-xs text-gray-300">© 2026 QuickTransfer Inc. {t.allRightsReserved}</p>
+           <p className="text-xs text-gray-300 dark:text-gray-500">© 2026 QuickTransfer Inc. {t.allRightsReserved}</p>
         </div>
       </footer>
     </div>

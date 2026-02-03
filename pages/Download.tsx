@@ -1,7 +1,9 @@
 import React from 'react';
-import { Send, Download, Smartphone, Monitor, Globe, Apple, Chrome, Zap, Shield, Clock } from 'lucide-react';
+import { Send, Download, Smartphone, Monitor, Globe, Apple, Chrome, Zap, Shield, Clock, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const DownloadPage: React.FC = () => {
+  const { isDark, toggleTheme } = useTheme();
   const platforms = [
     {
       icon: <Globe className="w-10 h-10 text-blue-500" />,
@@ -78,29 +80,37 @@ const DownloadPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-pink-100">
+      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-pink-100 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
             <div className="bg-red-500 p-1.5 rounded-lg">
               <Send className="w-5 h-5 text-white transform rotate-45" />
             </div>
-            <span className="text-xl font-bold text-gray-800">QuickTransfer</span>
+            <span className="text-xl font-bold text-gray-800 dark:text-white">QuickTransfer</span>
           </a>
-          <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            >
+              {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
+            </button>
+            <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
+          </div>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-4 py-12 text-center">
-        <div className="bg-red-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+        <div className="bg-red-100 dark:bg-red-900/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
           <Download className="w-10 h-10 text-red-500" />
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-gray-800 mb-4">
+        <h1 className="text-4xl md:text-5xl font-black text-gray-800 dark:text-white mb-4">
           Download QuickTransfer
         </h1>
-        <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+        <p className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
           Get QuickTransfer on all your devices. Transfer files seamlessly across platforms with our fast and secure file sharing solution.
         </p>
       </section>
@@ -109,12 +119,12 @@ const DownloadPage: React.FC = () => {
       <section className="max-w-4xl mx-auto px-4 pb-12">
         <div className="grid md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 shadow-lg text-center">
-              <div className="bg-gray-100 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg text-center">
+              <div className="bg-gray-100 dark:bg-gray-700 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4">
                 {feature.icon}
               </div>
-              <h3 className="font-bold text-gray-800 mb-2">{feature.title}</h3>
-              <p className="text-gray-500 text-sm">{feature.description}</p>
+              <h3 className="font-bold text-gray-800 dark:text-white mb-2">{feature.title}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -122,31 +132,31 @@ const DownloadPage: React.FC = () => {
 
       {/* Download Options */}
       <main className="max-w-4xl mx-auto px-4 pb-12">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Choose Your Platform</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Choose Your Platform</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {platforms.map((platform, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all ${
+              className={`bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border-2 transition-all ${
                 platform.available 
-                  ? 'border-red-200 hover:border-red-400 hover:shadow-xl' 
-                  : 'border-gray-100 opacity-75'
+                  ? 'border-red-200 dark:border-red-800 hover:border-red-400 dark:hover:border-red-600 hover:shadow-xl' 
+                  : 'border-gray-100 dark:border-gray-700 opacity-75'
               }`}
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="bg-gray-100 p-3 rounded-xl">
+                <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-xl">
                   {platform.icon}
                 </div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full ${
                   platform.available 
-                    ? 'bg-green-100 text-green-600' 
-                    : 'bg-gray-100 text-gray-500'
+                    ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' 
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
                 }`}>
                   {platform.badge}
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{platform.name}</h3>
-              <p className="text-gray-500 text-sm mb-4">{platform.description}</p>
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{platform.name}</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">{platform.description}</p>
               {platform.available ? (
                 <a 
                   href={platform.link}
@@ -157,7 +167,7 @@ const DownloadPage: React.FC = () => {
               ) : (
                 <button 
                   disabled
-                  className="w-full bg-gray-200 text-gray-500 py-3 rounded-xl font-bold cursor-not-allowed"
+                  className="w-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 py-3 rounded-xl font-bold cursor-not-allowed"
                 >
                   {platform.buttonText}
                 </button>
@@ -185,14 +195,14 @@ const DownloadPage: React.FC = () => {
 
       {/* Notify Section */}
       <section className="max-w-4xl mx-auto px-4 pb-12">
-        <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-          <h3 className="text-xl font-bold text-gray-800 mb-2">Get Notified When Apps Launch</h3>
-          <p className="text-gray-500 mb-6">Be the first to know when our desktop and mobile apps are ready.</p>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center">
+          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Get Notified When Apps Launch</h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">Be the first to know when our desktop and mobile apps are ready.</p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input 
               type="email" 
               placeholder="Enter your email"
-              className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
+              className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
             />
             <button className="bg-red-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-red-600 transition-all whitespace-nowrap">
               Notify Me
@@ -202,8 +212,8 @@ const DownloadPage: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-50 py-8 border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 text-sm">
+      <footer className="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-100 dark:border-gray-800">
+        <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 dark:text-gray-500 text-sm">
           © 2026 QuickTransfer. All rights reserved.
         </div>
       </footer>

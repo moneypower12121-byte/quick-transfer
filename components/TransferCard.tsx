@@ -36,19 +36,19 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
 
   if (type === 'send') {
     return (
-      <div className="bg-white rounded-2xl p-8 custom-shadow flex flex-col gap-6 transition-all hover:scale-[1.01] w-full max-w-md">
+      <div className="bg-white dark:bg-slate-800/80 dark:backdrop-blur-xl dark:border dark:border-white/10 rounded-2xl p-8 custom-shadow flex flex-col gap-6 transition-all hover:scale-[1.01] w-full max-w-md">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">{t.sendFile}</h2>
-          <p className="text-sm text-gray-400 mt-1">{t.sendHelper}</p>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{t.sendFile}</h2>
+          <p className="text-sm text-gray-400 dark:text-gray-400 mt-1">{t.sendHelper}</p>
         </div>
         
         {!selectedFile ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="flex-1 min-h-[160px] border-2 border-dashed border-gray-100 rounded-xl flex items-center justify-center cursor-pointer hover:bg-pink-50 hover:border-red-200 group transition-all"
+            className="flex-1 min-h-[160px] border-2 border-dashed border-gray-100 dark:border-slate-600 rounded-xl flex items-center justify-center cursor-pointer hover:bg-pink-50 dark:hover:bg-red-500/10 hover:border-red-200 dark:hover:border-red-500/50 group transition-all"
           >
-            <div className="bg-red-50 p-4 rounded-full group-hover:bg-red-100 transition-colors">
-              <Plus className="w-10 h-10 text-red-500" />
+            <div className="bg-red-50 dark:bg-red-500/20 p-4 rounded-full group-hover:bg-red-100 dark:group-hover:bg-red-500/30 transition-colors">
+              <Plus className="w-10 h-10 text-red-500 dark:text-red-400" />
             </div>
             <input 
               type="file" 
@@ -58,14 +58,14 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
             />
           </div>
         ) : (
-          <div className="flex-1 bg-gray-50 rounded-xl p-4 flex items-center justify-between border border-gray-100">
+          <div className="flex-1 bg-gray-50 dark:bg-slate-700/50 rounded-xl p-4 flex items-center justify-between border border-gray-100 dark:border-slate-600">
             <div className="flex items-center gap-3">
-              <div className="bg-blue-100 p-2 rounded-lg">
-                <FileText className="w-6 h-6 text-blue-600" />
+              <div className="bg-blue-100 dark:bg-blue-500/20 p-2 rounded-lg">
+                <FileText className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-gray-700 truncate max-w-[150px]">{selectedFile.name}</p>
-                <p className="text-xs text-gray-400">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-100 truncate max-w-[150px]">{selectedFile.name}</p>
+                <p className="text-xs text-gray-400 dark:text-gray-400">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
               </div>
             </div>
             <button onClick={() => setSelectedFile(null)} className="text-gray-400 hover:text-red-500">
@@ -78,7 +78,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
           disabled={!selectedFile || loading}
           onClick={handleSend}
           className={`w-full py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 ${
-            selectedFile && !loading ? 'bg-red-500 hover:bg-red-600 shadow-lg shadow-red-200' : 'bg-gray-200 cursor-not-allowed text-gray-400'
+            selectedFile && !loading ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-lg shadow-red-500/25 dark:shadow-red-500/20' : 'bg-gray-200 dark:bg-slate-700 cursor-not-allowed text-gray-400 dark:text-gray-500'
           }`}
         >
           {loading && <Loader2 className="w-5 h-5 animate-spin" />}
@@ -89,10 +89,10 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
   }
 
   return (
-    <div className="bg-white rounded-2xl p-8 custom-shadow flex flex-col gap-6 transition-all hover:scale-[1.01] w-full max-w-md">
+    <div className="bg-white dark:bg-slate-800/80 dark:backdrop-blur-xl dark:border dark:border-white/10 rounded-2xl p-8 custom-shadow flex flex-col gap-6 transition-all hover:scale-[1.01] w-full max-w-md">
       <div>
-        <h2 className="text-2xl font-bold text-gray-800">{t.receiveFile}</h2>
-        <p className="text-sm text-gray-400 mt-1">{t.receiveHelper}</p>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{t.receiveFile}</h2>
+        <p className="text-sm text-gray-400 dark:text-gray-400 mt-1">{t.receiveHelper}</p>
       </div>
       
       <div className="relative group">
@@ -103,18 +103,18 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
           maxLength={6}
           placeholder={t.enterCode}
           aria-label={t.enterCode}
-          className="w-full bg-gray-50 border border-gray-100 rounded-xl py-4 px-5 text-xl font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-red-100 focus:bg-white transition-all text-gray-700"
+          className="w-full bg-gray-50 dark:bg-slate-700/50 border border-gray-100 dark:border-slate-600 rounded-xl py-4 px-5 text-xl font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-red-400 dark:focus:ring-red-500/50 focus:bg-white dark:focus:bg-slate-700 transition-all text-gray-700 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500"
           value={code}
           onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
         />
-        <Download className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-300 group-focus-within:text-red-400" />
+        <Download className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-300 dark:text-gray-500 group-focus-within:text-red-400" />
       </div>
 
       <button 
         disabled={code.length < 6 || loading}
         onClick={handleReceive}
         className={`w-full py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 ${
-          code.length === 6 && !loading ? 'bg-red-500 hover:bg-red-600 shadow-lg shadow-red-200' : 'bg-gray-200 cursor-not-allowed text-gray-400'
+          code.length === 6 && !loading ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-lg shadow-red-500/25 dark:shadow-red-500/20' : 'bg-gray-200 dark:bg-slate-700 cursor-not-allowed text-gray-400 dark:text-gray-500'
         }`}
       >
         {loading && <Loader2 className="w-5 h-5 animate-spin" />}
