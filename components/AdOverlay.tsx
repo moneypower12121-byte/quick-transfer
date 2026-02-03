@@ -12,6 +12,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
   const adContainerRef = useRef<HTMLDivElement>(null);
+  const adLoadedRef = useRef(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -28,10 +29,12 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Load the ad script
+  // Load the ad script immediately
   useEffect(() => {
-    if (adContainerRef.current) {
-      // Set atOptions on window
+    if (adContainerRef.current && !adLoadedRef.current) {
+      adLoadedRef.current = true;
+      
+      // Set atOptions on window immediately
       (window as any).atOptions = {
         'key': '522d4ea741d98fdef7a995b1e977847e',
         'format': 'iframe',
@@ -40,17 +43,17 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
         'params': {}
       };
 
-      // Create and append the script
+      // Create and append the script immediately
       const script = document.createElement('script');
       script.src = 'https://www.highperformanceformat.com/522d4ea741d98fdef7a995b1e977847e/invoke.js';
-      script.async = true;
+      script.async = false; // Load synchronously for faster display
       adContainerRef.current.appendChild(script);
 
       return () => {
-        // Cleanup
         if (adContainerRef.current) {
           adContainerRef.current.innerHTML = '';
         }
+        adLoadedRef.current = false;
       };
     }
   }, []);

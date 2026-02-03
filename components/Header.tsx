@@ -19,7 +19,9 @@ const Header: React.FC = () => {
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
           <a href="/" className="text-red-500 border-b-2 border-red-500 pb-1">{t.transfer}</a>
-          <a href="/download" className="hover:text-red-500 transition-colors">{t.download}</a>
+          <a href="/help" className="hover:text-red-500 transition-colors">{t.howItWorks}</a>
+          <a href="/privacy" className="hover:text-red-500 transition-colors">{t.privacy}</a>
+          <a href="/contact" className="hover:text-red-500 transition-colors">{t.contact}</a>
         </nav>
 
         <div className="flex items-center gap-4">
