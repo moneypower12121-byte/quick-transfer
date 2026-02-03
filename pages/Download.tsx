@@ -1,5 +1,5 @@
 import React from 'react';
-import { Send, Download, Smartphone, Monitor, Globe, Apple, Chrome, Zap, Shield, Clock, Moon, Sun } from 'lucide-react';
+import { Rocket, Download, Smartphone, Monitor, Globe, Apple, Chrome, Zap, Shield, Clock, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
 const DownloadPage: React.FC = () => {
@@ -86,7 +86,7 @@ const DownloadPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2">
             <div className="bg-red-500 p-1.5 rounded-lg">
-              <Send className="w-5 h-5 text-white transform rotate-45" />
+              <Rocket className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-800 dark:text-white">QuickTransfer</span>
           </a>

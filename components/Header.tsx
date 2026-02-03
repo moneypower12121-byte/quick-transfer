@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Send, Menu, Moon, Sun, X } from 'lucide-react';
+import { Rocket, Menu, Moon, Sun, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -15,7 +15,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="bg-gradient-to-br from-red-500 to-pink-500 p-1.5 rounded-lg shadow-lg shadow-red-500/20">
-            <Send className="w-5 h-5 text-white transform rotate-45" />
+            <Rocket className="w-8 h-8 text-white" />
           </div>
           <span className="text-xl font-bold text-gray-800 dark:text-white tracking-tight">QuickTransfer</span>
         </div>

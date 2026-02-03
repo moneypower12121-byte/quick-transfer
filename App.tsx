@@ -8,7 +8,7 @@ import DemoAd from './components/DemoAd';
 import { AppState, TransferData } from './types';
 import { generateCode, saveData, getDataByCode } from './services/storage';
 import { useLanguage } from './context/LanguageContext';
-import { AlertCircle, HelpCircle, Send, X } from 'lucide-react';
+import { AlertCircle, HelpCircle, Rocket, Send, X } from 'lucide-react';
 
 const App: React.FC = () => {
   const { t } = useLanguage();
@@ -243,7 +243,7 @@ const App: React.FC = () => {
             {/* Logo */}
             <div className="flex items-center gap-2">
               <div className="bg-gradient-to-br from-red-500 to-pink-500 p-1.5 rounded-lg">
-                <Send className="w-4 h-4 text-white transform rotate-45" />
+                <Rocket className="w-4 h-4 text-white" />
               </div>
               <span className="font-bold text-gray-700 dark:text-white">QuickTransfer</span>
             </div>
@@ -267,7 +267,7 @@ const App: React.FC = () => {
           {/* Desktop Footer */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center gap-2 grayscale opacity-50">
-              <Send className="w-5 h-5 dark:text-white" />
+              <Rocket className="w-5 h-5 dark:text-white" />
               <span className="font-bold dark:text-white">QuickTransfer</span>
             </div>
             <div className="flex gap-8 text-sm text-gray-400 dark:text-gray-400 font-medium">
