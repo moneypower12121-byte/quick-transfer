@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import TransferCard from './components/TransferCard';
 import ResultView from './components/ResultView';
+import AdOverlay from './components/AdOverlay';
 import { AppState, TransferData } from './types';
 import { generateCode, saveData, getDataByCode } from './services/storage';
-// Fix: Added Send and X to the main lucide-react import at the top
 import { AlertCircle, HelpCircle, Send, X } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -13,10 +13,27 @@ const App: React.FC = () => {
   const [currentData, setCurrentData] = useState<TransferData | undefined>();
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'SENT' | 'RECEIVED'>('SENT');
+  const [showAd, setShowAd] = useState(false);
+  const [adType, setAdType] = useState<'send' | 'receive'>('send');
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
+  const [pendingCode, setPendingCode] = useState<string>('');
 
-  const handleSend = async (file: File) => {
+  // Show ad before sending
+  const handleSend = (file: File) => {
+    setPendingFile(file);
+    setAdType('send');
+    setShowAd(true);
+  };
+
+  // Actually send after ad is completed
+  const processSend = async () => {
+    if (!pendingFile) return;
+    
     setAppState('SENDING');
     setError(null);
+    
+    const file = pendingFile;
+    setPendingFile(null);
     
     // Convert to base64 for cloud storage
     const reader = new FileReader();
@@ -49,9 +66,22 @@ const App: React.FC = () => {
     };
   };
 
-  const handleReceive = async (code: string) => {
+  // Show ad before receiving
+  const handleReceive = (code: string) => {
+    setPendingCode(code);
+    setAdType('receive');
+    setShowAd(true);
+  };
+
+  // Actually receive after ad is completed
+  const processReceive = async () => {
+    if (!pendingCode) return;
+    
     setAppState('RECEIVING');
     setError(null);
+    
+    const code = pendingCode;
+    setPendingCode('');
 
     try {
       const data = await getDataByCode(code);
@@ -69,6 +99,16 @@ const App: React.FC = () => {
     }
   };
 
+  // Handle ad completion
+  const handleAdComplete = () => {
+    setShowAd(false);
+    if (adType === 'send') {
+      processSend();
+    } else {
+      processReceive();
+    }
+  };
+
   const reset = () => {
     setAppState('IDLE');
     setCurrentData(undefined);
@@ -77,6 +117,11 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col hero-gradient">
+      {/* Ad Overlay */}
+      {showAd && (
+        <AdOverlay onComplete={handleAdComplete} adType={adType} />
+      )}
+      
       <Header />
       
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
