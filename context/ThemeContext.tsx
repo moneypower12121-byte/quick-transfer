@@ -12,11 +12,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('quicktransfer_theme');
-      return (stored as Theme) || 'light';
-    }
-    return 'light';
+    const stored = localStorage.getItem('quicktransfer_theme');
+    return (stored as Theme) || 'light';
   });
 
   useEffect(() => {
