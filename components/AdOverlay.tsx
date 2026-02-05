@@ -103,7 +103,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
             {/* Loading indicator while ad loads */}
             {!adLoaded && (
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 dark:bg-slate-700/50 rounded-xl">
-                <div className="w-10 h-10 border-4 border-red-200 dark:border-red-500/30 border-t-red-500 rounded-full animate-spin mb-3"></div>
+                <div className="w-10 h-10 border-4 border-red-200 dark:border-slate-600 border-t-red-500 dark:border-t-red-400 rounded-full animate-spin mb-3"></div>
                 <p className="text-sm text-gray-500 dark:text-gray-300">Loading...</p>
               </div>
             )}
