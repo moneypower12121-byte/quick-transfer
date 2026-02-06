@@ -129,7 +129,10 @@ const App: React.FC = () => {
         setMode('RECEIVED');
         setAppState('COMPLETE');
       } else if (result.error === 'expired') {
-        setError(t.codeExpired || 'This transfer code is no longer valid.');
+        setError(t.codeExpiredDesc || 'This transfer code is no longer valid.');
+        setAppState('IDLE');
+      } else if (result.error === 'invalid') {
+        setError(t.codeInvalid || 'Invalid code. Please check and try again.');
         setAppState('IDLE');
       } else {
         setError(t.invalidCode);
