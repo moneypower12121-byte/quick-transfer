@@ -42,26 +42,29 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
       try {
         const freshData = await getDataByCode(data.code);
         if (freshData) {
-          setCurrentDownloadCount(freshData.downloadCount);
+          setCurrentDownloadCount(freshData.downloadCount || 0);
           // Check if expired by download limit
-          if (freshData.downloadCount >= data.maxDownloads) {
+          if ((freshData.downloadCount || 0) >= data.maxDownloads) {
             setIsExpired(true);
           }
         } else {
-          // Data was deleted (download limit reached)
+          // Data was deleted (download limit reached) or expired
           setIsExpired(true);
         }
       } catch (error) {
-        // Code might be expired/deleted
-        setIsExpired(true);
+        console.log('Checking status...', error);
+        // Don't immediately expire on error, might be network issue
       }
     };
     
+    // Initial check
     updateStatus();
-    const interval = setInterval(updateStatus, 1000);
+    
+    // Check every 3 seconds
+    const interval = setInterval(updateStatus, 3000);
     
     return () => clearInterval(interval);
-  }, [mode, data]);
+  }, [mode, data.code, data.expiresAt, data.maxDownloads]);
 
   // Format time remaining
   const formatTime = (ms: number) => {
