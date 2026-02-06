@@ -82,11 +82,21 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    
+
     // Increment download count and delete if limit reached
     try {
-      await incrementDownloadCount(data.code);
+      const expired = await incrementDownloadCount(data.code);
       setDownloaded(true);
+      if (expired) {
+        setIsExpired(true);
+        setCurrentDownloadCount(data.maxDownloads);
+      } else {
+        // Optionally, force refresh status
+        const freshData = await getDataByCode(data.code);
+        if (freshData) {
+          setCurrentDownloadCount(freshData.downloadCount || 0);
+        }
+      }
     } catch (error) {
       console.error('Failed to update download count:', error);
     }
