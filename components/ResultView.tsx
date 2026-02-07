@@ -51,6 +51,9 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
         } else if (result.error === 'expired') {
           setIsExpired(true);
           setIsLimit(false);
+        } else if (result.error === 'invalid' && currentDownloadCount === data.maxDownloads) {
+          setIsLimit(true);
+          setIsExpired(false);
         }
       } catch (error) {
         console.log('Checking status...', error);
