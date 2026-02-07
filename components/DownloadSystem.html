@@ -1,0 +1,18 @@
+<!-- DownloadSystem.html -->
+<div style="max-width:400px;margin:auto;padding:2em;border-radius:12px;background:#fff;box-shadow:0 2px 8px #eee;">
+  <div style="margin-bottom:1em;text-align:center;">
+    <span>Countdown: <span id="countdown">60</span> seconds</span>
+  </div>
+  <div style="margin-bottom:1em;text-align:center;">
+    <span>Downloads: <span id="count-display">0/5</span></span>
+  </div>
+  <button id="download-btn" style="width:100%;padding:1em;font-size:1.1em;border-radius:8px;background:#e53e3e;color:#fff;border:none;cursor:pointer;">Download File</button>
+  <div id="limit-msg" style="display:none;margin-top:1em;color:#e53e3e;font-weight:bold;text-align:center;">Download Limit Reached</div>
+</div>
+<!--
+- Countdown timer runs independently
+- Download button disables on limit or timer end
+- Limit message appears when reached
+- Download count persists on refresh
+-->
+<script src="./DownloadSystem.js"></script>
