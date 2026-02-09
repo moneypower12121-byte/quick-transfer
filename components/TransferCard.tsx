@@ -37,7 +37,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
     }
   };
 
-  const expiryOptions = [5, 10, 15, 20, 25];
+  const expiryOptions = [5, 10];
 
   const handleReceive = () => {
     if (code.length === 6 && onReceive) {

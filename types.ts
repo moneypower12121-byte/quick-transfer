@@ -9,7 +9,6 @@ export interface TransferData {
   createdAt: number;
   expiresAt: number;
   // maxDownloads removed - downloads are unlimited
-  downloadCount: number; // Current download count (informational)
 }
 
 export type AppState = 'IDLE' | 'SENDING' | 'RECEIVING' | 'COMPLETE';

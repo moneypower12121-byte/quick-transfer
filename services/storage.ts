@@ -44,21 +44,7 @@ export const getDataByCode = async (code: string): Promise<{ data?: TransferData
   return { error: 'invalid' };
 };
 
-// Increment download count (no deletion)
-export const incrementDownloadCount = async (code: string): Promise<boolean> => {
-  const dbRef = ref(database);
-  const snapshot = await get(child(dbRef, 'transfers/' + code));
-  
-  if (snapshot.exists()) {
-    const data = snapshot.val() as TransferData;
-    const newCount = (data.downloadCount || 0) + 1;
-    // Update download count only
-    const transferRef = ref(database, 'transfers/' + code);
-    await update(transferRef, { downloadCount: newCount });
-    return false; // never deleted due to downloads
-  }
-  return false;
-};
+
 
 // Delete transfer data after download
 export const deleteTransfer = async (code: string): Promise<void> => {

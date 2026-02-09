@@ -4,7 +4,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { Download, Share2, ArrowLeft, CheckCircle2, FileText, Info, FileCode, Paperclip, Check, Users, Clock, AlertTriangle } from 'lucide-react';
 import { TransferData } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { incrementDownloadCount, getDataByCode } from '../services/storage';
+import { getDataByCode } from '../services/storage';
 import DemoAd from './DemoAd';
 
 interface ResultViewProps {
@@ -18,12 +18,11 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
   const [copied, setCopied] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
-  const [currentDownloadCount, setCurrentDownloadCount] = useState<number>(data?.downloadCount || 0);
   const [isExpired, setIsExpired] = useState(false);
   
   if (!data) return null;
 
-  // Live countdown timer and download count refresh
+  // Live countdown timer
   useEffect(() => {
     if (mode !== 'SENT') return;
     
@@ -35,17 +34,6 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
       if (remaining <= 0) {
         setIsExpired(true);
         return;
-      }
-      // Refresh download count from database
-      try {
-        const result = await getDataByCode(data.code);
-        if (result.data) {
-          setCurrentDownloadCount(result.data.downloadCount || 0);
-        } else if (result.error === 'expired') {
-          setIsExpired(true);
-        }
-      } catch (error) {
-        console.log('Checking status...', error);
       }
     };
     
@@ -74,26 +62,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
     link.click();
     document.body.removeChild(link);
 
-    // Increment download count and delete if limit reached
-    try {
-      const expired = await incrementDownloadCount(data.code);
-      setDownloaded(true);
-      if (expired) {
-        // storage no longer deletes on download; expired flag unused here
-      } else {
-        // Optionally, force refresh status
-        const result = await getDataByCode(data.code);
-        if (result.data) {
-          setCurrentDownloadCount(result.data.downloadCount || 0);
-        } else if (result.error === 'invalid') {
-          // Data deleted or not found - treat as invalid
-        } else if (result.error === 'expired') {
-          setIsExpired(true);
-        }
-      }
-    } catch (error) {
-      console.error('Failed to update download count:', error);
-    }
+    setDownloaded(true);
   };
 
   const handleCopyCode = () => {
@@ -139,24 +108,13 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
                 {data.code}
               </div>
 
-              {/* Live Stats Bar */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {/* Time Remaining */}
-                <div className="bg-orange-50 dark:bg-orange-500/20 rounded-xl p-3 border border-orange-200 dark:border-orange-500/30">
-                  <div className="flex items-center justify-center gap-2 text-orange-600 dark:text-orange-400">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-2xl font-black">{formatTime(timeRemaining)}</span>
-                  </div>
-                  <p className="text-xs text-orange-500 dark:text-orange-400 mt-1">{t.timeLeft || 'Time Left'}</p>
+              {/* Time Remaining */}
+              <div className="bg-orange-50 dark:bg-orange-500/20 rounded-xl p-3 border border-orange-200 dark:border-orange-500/30">
+                <div className="flex items-center justify-center gap-2 text-orange-600 dark:text-orange-400">
+                  <Clock className="w-4 h-4" />
+                  <span className="text-2xl font-black">{formatTime(timeRemaining)}</span>
                 </div>
-                {/* Downloads */}
-                <div className="bg-blue-50 dark:bg-blue-500/20 rounded-xl p-3 border border-blue-200 dark:border-blue-500/30">
-                  <div className="flex items-center justify-center gap-2 text-blue-600 dark:text-blue-400">
-                      <Users className="w-4 h-4" />
-                      <span className="text-2xl font-black">{currentDownloadCount}</span>
-                    </div>
-                    <p className="text-xs text-blue-500 dark:text-blue-400 mt-1">{t.downloads || 'Downloads'}</p>
-                </div>
+                <p className="text-xs text-orange-500 dark:text-orange-400 mt-1">{t.timeLeft || 'Time Left'}</p>
               </div>
 
               <div className="bg-gray-50 dark:bg-slate-700/50 p-6 rounded-2xl flex flex-col items-center gap-4 mb-8 border border-gray-100 dark:border-slate-600">

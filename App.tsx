@@ -67,7 +67,6 @@ const App: React.FC = () => {
         content: reader.result as string,
         createdAt: Date.now(),
         expiresAt: Date.now() + pendingExpiryMinutes * 60 * 1000, // Dynamic expiry
-        downloadCount: 0,
       };
 
       try {
