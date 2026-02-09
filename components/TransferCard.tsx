@@ -16,7 +16,11 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
   const [code, setCode] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [expiryMinutes, setExpiryMinutes] = useState<number>(10);
+  const [fileError, setFileError] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Maximum file size: 100MB
+  const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB in bytes
 
   // Pre-fill code from URL (QR scan)
   useEffect(() => {
@@ -27,7 +31,21 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setSelectedFile(e.target.files[0]);
+      const file = e.target.files[0];
+      
+      // Check file size limit
+      if (file.size > MAX_FILE_SIZE) {
+        setFileError(`File size exceeds 100MB limit. Please select a smaller file.`);
+        setSelectedFile(null);
+        // Reset the input
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+        return;
+      }
+      
+      setFileError('');
+      setSelectedFile(file);
     }
   };
 
@@ -58,11 +76,13 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
         {!selectedFile ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="flex-1 min-h-[160px] border-2 border-dashed border-gray-100 dark:border-slate-600 rounded-xl flex items-center justify-center cursor-pointer hover:bg-pink-50 dark:hover:bg-red-500/10 hover:border-red-200 dark:hover:border-red-500/50 group transition-all"
+            className="flex-1 min-h-[160px] border-2 border-dashed border-gray-100 dark:border-slate-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:bg-pink-50 dark:hover:bg-red-500/10 hover:border-red-200 dark:hover:border-red-500/50 group transition-all"
           >
-            <div className="bg-red-50 dark:bg-red-500/20 p-4 rounded-full group-hover:bg-red-100 dark:group-hover:bg-red-500/30 transition-colors">
+            <div className="bg-red-50 dark:bg-red-500/20 p-4 rounded-full group-hover:bg-red-100 dark:group-hover:bg-red-500/30 transition-colors mb-3">
               <Plus className="w-10 h-10 text-red-500 dark:text-red-400" />
             </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Click to select a file</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500">Maximum file size: 100MB</p>
             <input 
               type="file" 
               className="hidden" 
@@ -81,9 +101,19 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
                 <p className="text-xs text-gray-400 dark:text-gray-400">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
               </div>
             </div>
-            <button onClick={() => setSelectedFile(null)} className="text-gray-400 hover:text-red-500">
+            <button onClick={() => {
+              setSelectedFile(null);
+              setFileError('');
+            }} className="text-gray-400 hover:text-red-500">
               <X className="w-5 h-5" />
             </button>
+          </div>
+        )}
+
+        {/* File size error message */}
+        {fileError && (
+          <div className="bg-red-50 dark:bg-red-500/20 border border-red-200 dark:border-red-500/30 rounded-xl p-3">
+            <p className="text-sm text-red-600 dark:text-red-400">{fileError}</p>
           </div>
         )}
 
