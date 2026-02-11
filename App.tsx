@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import TransferCard from './components/TransferCard';
 import ResultView from './components/ResultView';
-import AdOverlay from './components/AdOverlay';
-import DemoAd from './components/DemoAd';
 import TransferHistory from './components/TransferHistory';
 import { AppState, TransferData } from './types';
 import { generateCode, saveData, getDataByCode } from './services/storage';
@@ -18,8 +16,6 @@ const App: React.FC = () => {
   const [currentData, setCurrentData] = useState<TransferData | undefined>();
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<'SENT' | 'RECEIVED'>('SENT');
-  const [showAd, setShowAd] = useState(false);
-  const [adType, setAdType] = useState<'send' | 'receive'>('send');
   const [pendingFile, setPendingFile] = useState<File | null>(null);
   const [pendingExpiryMinutes, setPendingExpiryMinutes] = useState<number>(10);
   const [pendingCode, setPendingCode] = useState<string>('');
@@ -36,23 +32,10 @@ const App: React.FC = () => {
     }
   }, []);
 
-  // Show ad before sending
-  const handleSend = (file: File, expiryMinutes: number) => {
-    setPendingFile(file);
-    setPendingExpiryMinutes(expiryMinutes);
-    setAdType('send');
-    setShowAd(true);
-  };
-
-  // Actually send after ad is completed
-  const processSend = async () => {
-    if (!pendingFile) return;
-    
+  // Send file directly
+  const handleSend = async (file: File, expiryMinutes: number) => {
     setAppState('SENDING');
     setError(null);
-    
-    const file = pendingFile;
-    setPendingFile(null);
     
     // Convert to base64 for cloud storage
     const reader = new FileReader();
@@ -66,7 +49,7 @@ const App: React.FC = () => {
         type: file.type,
         content: reader.result as string,
         createdAt: Date.now(),
-        expiresAt: Date.now() + pendingExpiryMinutes * 60 * 1000, // Dynamic expiry
+        expiresAt: Date.now() + expiryMinutes * 60 * 1000, // Dynamic expiry
       };
 
       try {
@@ -77,7 +60,7 @@ const App: React.FC = () => {
           name: transfer.name,
           size: transfer.size,
           type: 'sent',
-          expiryMinutes: pendingExpiryMinutes,
+          expiryMinutes: expiryMinutes,
         });
         setCurrentData(transfer);
         setMode('SENT');
@@ -93,22 +76,10 @@ const App: React.FC = () => {
     };
   };
 
-  // Show ad before receiving
-  const handleReceive = (code: string) => {
-    setPendingCode(code);
-    setAdType('receive');
-    setShowAd(true);
-  };
-
-  // Actually receive after ad is completed
-  const processReceive = async () => {
-    if (!pendingCode) return;
-    
+  // Receive file directly
+  const handleReceive = async (code: string) => {
     setAppState('RECEIVING');
     setError(null);
-    
-    const code = pendingCode;
-    setPendingCode('');
 
     try {
       const result = await getDataByCode(code);
@@ -139,16 +110,6 @@ const App: React.FC = () => {
     }
   };
 
-  // Handle ad completion
-  const handleAdComplete = () => {
-    setShowAd(false);
-    if (adType === 'send') {
-      processSend();
-    } else {
-      processReceive();
-    }
-  };
-
   const reset = () => {
     setAppState('IDLE');
     setCurrentData(undefined);
@@ -157,11 +118,6 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col hero-gradient dark:bg-slate-900">
-      {/* Ad Overlay */}
-      {showAd && (
-        <AdOverlay onComplete={handleAdComplete} adType={adType} />
-      )}
-      
       <Header />
       
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
