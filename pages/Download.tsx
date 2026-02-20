@@ -45,7 +45,10 @@ const DownloadPage: React.FC = () => {
               </div>
             </div>
             <div className="flex gap-3 flex-wrap">
-              <InstallButton />
+              <div className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium cursor-pointer select-none hover:opacity-95"
+                style={{display:'inline-flex',alignItems:'center',justifyContent:'center'}}>
+                <InstallButton />
+              </div>
             </div>
           </div>
         </div>
