@@ -6,6 +6,7 @@
   "display": "standalone",
   "background_color": "#fff5f5",
   "theme_color": "#ef4444",
+  "version": "2",
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -20,12 +21,12 @@
   ],
   "screenshots": [
     {
-      "src": "/icons/screenshots/screenshot-wide.png",
+      "src": "/icons/screenshots/screenshot-wide.png?v=2",
       "sizes": "1280x720",
       "type": "image/png"
     },
     {
-      "src": "/icons/screenshots/screenshot-mobile.png",
+      "src": "/icons/screenshots/screenshot-mobile.png?v=2",
       "sizes": "412x915",
       "type": "image/png"
     }
