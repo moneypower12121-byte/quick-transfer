@@ -1,48 +1,68 @@
 import React from 'react';
-import { Rocket, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
+import { Monitor, Smartphone, Download } from 'lucide-react';
+import InstallButton from '../components/InstallButton';
 
 const DownloadPage: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-gray-800">
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-pink-100 dark:border-gray-700">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
-            <div className="bg-red-500 p-1.5 rounded-lg">
-              <Rocket className="w-5 h-5 text-white" />
+    <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-gray-800 py-12">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-black text-gray-800 dark:text-white">Download QuickTransfer</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-2">Choose your platform below to get the app or use the web app.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-cyan-50 dark:bg-cyan-900/20 p-3 rounded-lg">
+                <Smartphone className="w-8 h-8 text-cyan-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white">Mobile (Android)</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Install the PWA on mobile or download the APK.</p>
+              </div>
             </div>
-            <span className="text-xl font-bold text-gray-800 dark:text-white">QuickTransfer</span>
-          </a>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-            >
-              {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
-            </button>
-            <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
+            <div className="flex gap-3 flex-wrap">
+              <InstallButton />
+              <a
+                href="/downloads/quicktransfer-android.apk"
+                className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-medium hover:opacity-95"
+                download
+              >
+                <Download className="inline w-4 h-4 mr-2 align-middle" />
+                Download APK
+              </a>
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+                <Monitor className="w-8 h-8 text-red-600" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white">Windows / Desktop</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Install the PWA as a desktop app or download the installer.</p>
+              </div>
+            </div>
+            <div className="flex gap-3 flex-wrap">
+              <InstallButton />
+              <a
+                href="/downloads/quicktransfer-windows.zip"
+                className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium hover:opacity-95"
+                download
+              >
+                <Download className="inline w-4 h-4 mr-2 align-middle" />
+                Download for Windows
+              </a>
+            </div>
           </div>
         </div>
-      </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-24 text-center">
-        <h1 className="text-4xl md:text-5xl font-black text-gray-800 dark:text-white mb-4">Downloads Disabled</h1>
-        <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">The site no longer offers downloadable installers or APKs. You can use QuickTransfer directly in your browser.</p>
-        <a 
-          href="/"
-          className="inline-block bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-xl font-bold hover:opacity-95 transition"
-        >
-          Open Web App
-        </a>
-      </main>
-
-      <footer className="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-100 dark:border-gray-800">
-        <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 dark:text-gray-500 text-sm">
-          © 2026 QuickTransfer. All rights reserved.
+        <div className="text-center mt-10 text-sm text-gray-500 dark:text-gray-400">
+          If you prefer using the web app, go back to the homepage and start transferring files instantly.
         </div>
-      </footer>
+      </div>
     </div>
   );
 };
