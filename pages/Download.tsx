@@ -30,7 +30,7 @@ const DownloadPage: React.FC = () => {
                 download
               >
                 <Download className="inline w-4 h-4 mr-2 align-middle" />
-                Download APK
+                Install APK
               </a>
             </div>
           </div>
@@ -53,7 +53,7 @@ const DownloadPage: React.FC = () => {
                 download
               >
                 <Download className="inline w-4 h-4 mr-2 align-middle" />
-                Download for Windows
+                Install for Windows
               </a>
             </div>
           </div>
