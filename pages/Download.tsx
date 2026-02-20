@@ -63,9 +63,9 @@ const DownloadPage: React.FC = () => {
                 download
               >
                 <Download className="inline w-4 h-4 mr-2 align-middle" />
-                Download APK
+                  Install APK
               </a>
-              <InstallButton label="Install PWA" className="px-4 py-2 rounded-lg bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition" />
+                {/* InstallButton removed as requested */}
             </div>
           </div>
 
