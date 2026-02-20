@@ -1,6 +1,5 @@
 import React from 'react';
 import { Monitor, Smartphone, Download } from 'lucide-react';
-import InstallButton from '../components/InstallButton';
 
 const DownloadPage: React.FC = () => {
   return (
@@ -23,7 +22,6 @@ const DownloadPage: React.FC = () => {
               </div>
             </div>
             <div className="flex gap-3 flex-wrap">
-              <InstallButton />
               <a
                 href="/downloads/quicktransfer-android.apk"
                 className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-medium hover:opacity-95"
@@ -31,6 +29,12 @@ const DownloadPage: React.FC = () => {
               >
                 <Download className="inline w-4 h-4 mr-2 align-middle" />
                 Download APK
+              </a>
+              <a
+                href="/"
+                className="inline-block px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-transparent hover:bg-gray-50"
+              >
+                Use Web App
               </a>
             </div>
           </div>
@@ -46,7 +50,6 @@ const DownloadPage: React.FC = () => {
               </div>
             </div>
             <div className="flex gap-3 flex-wrap">
-              <InstallButton />
               <a
                 href="/downloads/quicktransfer-windows.zip"
                 className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium hover:opacity-95"
@@ -54,6 +57,12 @@ const DownloadPage: React.FC = () => {
               >
                 <Download className="inline w-4 h-4 mr-2 align-middle" />
                 Download for Windows
+              </a>
+              <a
+                href="/"
+                className="inline-block px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-transparent hover:bg-gray-50"
+              >
+                Use Web App
               </a>
             </div>
           </div>
