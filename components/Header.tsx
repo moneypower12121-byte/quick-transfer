@@ -74,6 +74,13 @@ const Header: React.FC = () => {
               {t.transfer}
             </a>
             <a 
+              href="/download" 
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 font-medium transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Download
+            </a>
+            <a 
               href="/help" 
               className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800 font-medium transition-colors"
               onClick={() => setMobileMenuOpen(false)}
