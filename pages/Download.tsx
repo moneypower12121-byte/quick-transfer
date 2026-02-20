@@ -57,14 +57,7 @@ const DownloadPage: React.FC = () => {
               </div>
             </div>
             <div className="flex gap-3 flex-wrap mt-2">
-              <a
-                href="/downloads/quicktransfer-android.apk"
-                className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold shadow hover:opacity-95 transition"
-                download
-              >
-                <Download className="inline w-4 h-4 mr-2 align-middle" />
-                  Install APK
-              </a>
+              
                 <InstallButton label="Install APK" className="px-4 py-2 rounded-lg bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition" />
             </div>
           </div>
