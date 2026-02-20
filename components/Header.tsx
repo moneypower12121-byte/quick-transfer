@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Rocket, Menu, Moon, Sun, X } from 'lucide-react';
 import LanguageSelector from './LanguageSelector';
+import InstallButton from './InstallButton';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -41,6 +42,13 @@ const Header: React.FC = () => {
             )}
           </button>
           <LanguageSelector />
+          <a
+            href="/download"
+            className="hidden sm:inline-block px-3 py-2 rounded-lg bg-red-500 text-white font-medium hover:bg-red-600 transition"
+          >
+            Download
+          </a>
+          <InstallButton />
           <button 
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

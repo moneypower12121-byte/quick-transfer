@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Download from './pages/Download';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { registerSW } from 'virtual:pwa-register';
 
 // Simple router based on pathname
 const getPage = () => {
@@ -44,3 +45,6 @@ root.render(
     </ThemeProvider>
   </React.StrictMode>
 );
+
+// Register service worker for PWA
+registerSW({ immediate: true });

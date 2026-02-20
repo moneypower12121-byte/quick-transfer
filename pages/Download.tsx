@@ -6,58 +6,22 @@ const DownloadPage: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
   const platforms = [
     {
-      icon: <Globe className="w-10 h-10 text-blue-500" />,
-      name: "Web App",
-      description: "Use directly in your browser - no download needed",
-      buttonText: "Open Web App",
-      link: "/",
-      available: true,
-      badge: "Recommended"
-    },
-    {
-      icon: <Chrome className="w-10 h-10 text-green-500" />,
-      name: "Chrome Extension",
-      description: "Quick access from your browser toolbar",
-      buttonText: "Coming Soon",
-      link: "#",
-      available: false,
-      badge: "Soon"
-    },
-    {
       icon: <Monitor className="w-10 h-10 text-purple-500" />,
       name: "Windows",
-      description: "Desktop app for Windows 10/11",
-      buttonText: "Coming Soon",
-      link: "#",
-      available: false,
-      badge: "Soon"
-    },
-    {
-      icon: <Apple className="w-10 h-10 text-gray-700" />,
-      name: "macOS",
-      description: "Desktop app for macOS 12+",
-      buttonText: "Coming Soon",
-      link: "#",
-      available: false,
-      badge: "Soon"
+      description: "Desktop installer (zip/exe) or install as PWA on Windows",
+      buttonText: "Download for Windows",
+      link: "/downloads/quicktransfer-windows.zip",
+      available: true,
+      badge: "Download"
     },
     {
       icon: <Smartphone className="w-10 h-10 text-cyan-500" />,
       name: "Android",
-      description: "Mobile app for Android 8.0+",
-      buttonText: "Coming Soon",
-      link: "#",
-      available: false,
-      badge: "Soon"
-    },
-    {
-      icon: <Smartphone className="w-10 h-10 text-gray-500" />,
-      name: "iOS",
-      description: "Mobile app for iPhone & iPad",
-      buttonText: "Coming Soon",
-      link: "#",
-      available: false,
-      badge: "Soon"
+      description: "Install via APK or add the PWA to your home screen",
+      buttonText: "Download APK",
+      link: "/downloads/quicktransfer-android.apk",
+      available: true,
+      badge: "Download"
     }
   ];
 
@@ -158,12 +122,17 @@ const DownloadPage: React.FC = () => {
               <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{platform.name}</h3>
               <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">{platform.description}</p>
               {platform.available ? (
-                <a 
-                  href={platform.link}
-                  className="block w-full bg-gradient-to-r from-red-500 to-pink-500 text-white py-3 rounded-xl font-bold text-center hover:opacity-90 transition-all"
-                >
-                  {platform.buttonText}
-                </a>
+                platform.name === 'Web App' ? (
+                  <InstallButton />
+                ) : (
+                  <a 
+                    href={platform.link}
+                    download
+                    className="block w-full bg-gradient-to-r from-red-500 to-pink-500 text-white py-3 rounded-xl font-bold text-center hover:opacity-90 transition-all"
+                  >
+                    {platform.buttonText}
+                  </a>
+                )
               ) : (
                 <button 
                   disabled
@@ -176,6 +145,16 @@ const DownloadPage: React.FC = () => {
           ))}
         </div>
       </main>
+
+      {/* Platform-specific notes */}
+      <section className="max-w-4xl mx-auto px-4 pb-12">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
+          <h3 className="text-lg font-bold mb-2">iOS users</h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">On iPhone/iPad, open this site in Safari and use Share → Add to Home Screen to install the app.</p>
+          <h3 className="text-lg font-bold mb-2">Windows / Desktop</h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">You can download the installer (placeholder) or install the PWA from the browser (use the install button or browser menu → Install).</p>
+        </div>
+      </section>
 
       {/* Web App CTA */}
       <section className="max-w-4xl mx-auto px-4 pb-12">
