@@ -46,9 +46,14 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
 
   const handleSend = () => {
     if (selectedFiles.length && onSend) {
-      // Combine files into a single FileList-like array
-      // You may need to update the parent handler to accept multiple files
-      onSend(selectedFiles, expiryMinutes);
+      // Call onSend for each file so parent can handle files individually
+      for (const f of selectedFiles) {
+        try {
+          onSend(f as unknown as File, expiryMinutes as number);
+        } catch (err) {
+          // ignore individual errors here; parent will report if needed
+        }
+      }
     }
   };
 
