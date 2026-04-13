@@ -1,19 +1,14 @@
-import React, { useEffect } from 'react';
-import { Rocket, HelpCircle, Upload, Download, Clock, Key, Shield, Zap, MessageCircle, Moon, Sun } from 'lucide-react';
-import DemoAd from '../components/DemoAd';
-import { useTheme } from '../context/ThemeContext';
+import { HelpCircle, Upload, Download, Clock, Key, Shield, Zap, MessageCircle } from 'lucide-react';
+import DemoAd from '@/components/DemoAd';
+import Header from '@/components/Header';
+import type { Metadata } from 'next';
 
-const HelpCenter: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
-  
-  useEffect(() => {
-    document.title = 'How QuickTransfer Works – Send Files Instantly';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Learn how QuickTransfer works. Upload a file, get a secure 6-digit code, and share files instantly across any device.');
-    }
-  }, []);
-  
+export const metadata: Metadata = {
+  title: 'How QuickTransfer Works – Send Files Instantly',
+  description: 'Learn how QuickTransfer works. Upload a file, get a secure 6-digit code, and share files instantly across any device.',
+};
+
+export default function HelpPage() {
   const faqs = [
     {
       icon: <Upload className="w-5 h-5 text-blue-500" />,
@@ -54,29 +49,9 @@ const HelpCenter: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-gray-800">
-      {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-pink-100 dark:border-gray-700">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
-            <div className="bg-red-500 p-1.5 rounded-lg">
-              <Rocket className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-800 dark:text-white">QuickTransfer</span>
-          </a>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-            >
-              {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
-            </button>
-            <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
-          </div>
-        </div>
-      </header>
+      <Header />
 
-      {/* Content */}
-      <main className="max-w-4xl mx-auto px-4 py-12">
+      <main className="max-w-4xl mx-auto px-4 py-24">
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-12">
           <div className="flex items-center gap-3 mb-6">
             <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-xl">
@@ -89,7 +64,6 @@ const HelpCenter: React.FC = () => {
             Find answers to common questions about using QuickTransfer.
           </p>
 
-          {/* Quick Start */}
           <div className="bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl p-6 mb-10 text-white">
             <h2 className="text-xl font-bold mb-3">🚀 Quick Start Guide</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -108,7 +82,6 @@ const HelpCenter: React.FC = () => {
             </div>
           </div>
 
-          {/* FAQs */}
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
@@ -126,7 +99,6 @@ const HelpCenter: React.FC = () => {
             ))}
           </div>
 
-          {/* Still Need Help */}
           <div className="mt-10 bg-gray-50 dark:bg-gray-700 rounded-2xl p-6 text-center">
             <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Still need help?</h3>
             <p className="text-gray-500 dark:text-gray-400 mb-4">Can't find what you're looking for? Contact our support team.</p>
@@ -138,14 +110,12 @@ const HelpCenter: React.FC = () => {
             </a>
           </div>
           
-          {/* Demo Ad - Sidebar Style */}
           <div className="mt-8 flex justify-center">
             <DemoAd size="300x250" label="Help Page Sidebar" />
           </div>
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-100 dark:border-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 dark:text-gray-500 text-sm">
           © 2026 QuickTransfer. All rights reserved.
@@ -153,6 +123,4 @@ const HelpCenter: React.FC = () => {
       </footer>
     </div>
   );
-};
-
-export default HelpCenter;
+}

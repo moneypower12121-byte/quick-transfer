@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Clock, Zap } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';

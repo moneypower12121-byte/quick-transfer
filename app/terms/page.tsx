@@ -1,44 +1,19 @@
-import React, { useEffect } from 'react';
-import { Rocket, Shield, FileText, AlertTriangle, CheckCircle, Moon, Sun } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext';
-import DemoAd from '../components/DemoAd';
+import { Rocket, Shield, FileText, AlertTriangle, CheckCircle } from 'lucide-react';
+import DemoAd from '@/components/DemoAd';
+import Header from '@/components/Header';
+import type { Metadata } from 'next';
 
-const Terms: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
-  
-  useEffect(() => {
-    document.title = 'Terms of Service – QuickTransfer';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Read QuickTransfer Terms of Service. Simple, fair terms for using our free file sharing service. No hidden fees, no surprises.');
-    }
-  }, []);
-  
+export const metadata: Metadata = {
+  title: 'Terms of Service – QuickTransfer',
+  description: 'Read QuickTransfer Terms of Service. Simple, fair terms for using our free file sharing service. No hidden fees, no surprises.',
+};
+
+export default function TermsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-pink-50 dark:from-gray-900 dark:to-gray-800">
-      {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-pink-100 dark:border-gray-700">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
-            <div className="bg-red-500 p-1.5 rounded-lg">
-              <Rocket className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-800 dark:text-white">QuickTransfer</span>
-          </a>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-            >
-              {isDark ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
-            </button>
-            <a href="/" className="text-red-500 font-medium hover:underline">← Back to Home</a>
-          </div>
-        </div>
-      </header>
+      <Header />
 
-      {/* Content */}
-      <main className="max-w-4xl mx-auto px-4 py-12">
+      <main className="max-w-4xl mx-auto px-4 py-24">
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 md:p-12">
           <div className="flex items-center gap-3 mb-6">
             <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-xl">
@@ -132,14 +107,12 @@ const Terms: React.FC = () => {
             </section>
           </div>
           
-          {/* Demo Ad */}
           <div className="mt-8 flex justify-center">
             <DemoAd size="468x60" mobileSize="320x50" />
           </div>
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="bg-gray-50 dark:bg-gray-900 py-8 border-t border-gray-100 dark:border-gray-800">
         <div className="max-w-4xl mx-auto px-4 text-center text-gray-400 dark:text-gray-500 text-sm">
           © 2026 QuickTransfer. All rights reserved.
@@ -147,6 +120,4 @@ const Terms: React.FC = () => {
       </footer>
     </div>
   );
-};
-
-export default Terms;
+}

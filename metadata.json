@@ -1,7 +1,0 @@
-{
-  "name": "QuickTransfer",
-  "description": "A high-speed file and data sharing application that uses 6-digit codes and QR codes for secure, instant transfers between devices.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}

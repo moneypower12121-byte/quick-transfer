@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { History, Send, Download, Trash2, Clock, X, FileText } from 'lucide-react';
 import { getHistory, clearHistory, HistoryItem } from '../services/history';
