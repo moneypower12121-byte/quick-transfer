@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "postbuild": "react-snap || exit 0",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "generate-icons": "node scripts/generate-icons.cjs",
-    "preview": "vite preview",
     "electron:dev": "electron .",
     "electron:build": "electron-builder --win --x64"
   },
@@ -55,20 +55,5 @@
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true
     }
-  },
-  "reactSnap": {
-    "source": "dist",
-    "include": [
-      "/",
-      "/terms",
-      "/privacy",
-      "/help",
-      "/contact",
-      "/download"
-    ],
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
   }
 }
