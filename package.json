@@ -1,29 +1,74 @@
 {
   "name": "quicktransfer",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite",
+    "build": "vite build",
+    "postbuild": "react-snap || exit 0",
+    "generate-icons": "node scripts/generate-icons.cjs",
+    "preview": "vite preview",
+    "electron:dev": "electron .",
+    "electron:build": "electron-builder --win --x64"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.27",
     "firebase": "^10.14.1",
     "lucide-react": "^0.563.0",
-    "next": "latest",
+    "next": "^16.2.3",
+    "postcss": "^8.5.9",
     "qrcode.react": "^4.2.0",
-    "react": "latest",
-    "react-dom": "latest",
-    "lucide-react": "^0.563.0"
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.0.0"
+    "electron": "^26.0.0",
+    "electron-builder": "^24.0.0",
+    "sharp": "^0.34.5",
+    "typescript": "~5.8.2"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.quicktransfer.app",
+    "productName": "QuickTransfer",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist_electron"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "public/**"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "publisherName": "QuickTransfer"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "reactSnap": {
+    "source": "dist",
+    "include": [
+      "/",
+      "/terms",
+      "/privacy",
+      "/help",
+      "/contact",
+      "/download"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }
