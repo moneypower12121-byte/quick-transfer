@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "react-snap || exit 0",
     "generate-icons": "node scripts/generate-icons.cjs",
     "preview": "vite preview",
     "electron:dev": "electron .",
@@ -21,12 +22,13 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "electron": "^26.0.0",
+    "electron-builder": "^24.0.0",
+    "react-snap": "^1.23.0",
     "sharp": "^0.34.5",
     "typescript": "~5.8.2",
     "vite": "^5.4.21",
-    "vite-plugin-pwa": "^0.18.0",
-    "electron": "^26.0.0",
-    "electron-builder": "^24.0.0"
+    "vite-plugin-pwa": "^0.18.0"
   },
   "main": "electron/main.cjs",
   "build": {
@@ -42,7 +44,9 @@
       "public/**"
     ],
     "win": {
-      "target": ["nsis"],
+      "target": [
+        "nsis"
+      ],
       "publisherName": "QuickTransfer"
     },
     "nsis": {
@@ -51,5 +55,20 @@
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true
     }
+  },
+  "reactSnap": {
+    "source": "dist",
+    "include": [
+      "/",
+      "/terms",
+      "/privacy",
+      "/help",
+      "/contact",
+      "/download"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }

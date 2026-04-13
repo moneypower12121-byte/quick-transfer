@@ -35,8 +35,7 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
+const appElement = (
   <React.StrictMode>
     <ThemeProvider>
       <LanguageProvider>
@@ -46,5 +45,11 @@ root.render(
   </React.StrictMode>
 );
 
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrateRoot(rootElement, appElement);
+} else {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(appElement);
+}
 // Register service worker for PWA
 registerSW({ immediate: true });
