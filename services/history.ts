@@ -17,6 +17,7 @@ const MAX_HISTORY_ITEMS = 3;
 // Get all history items
 export const getHistory = (): HistoryItem[] => {
   try {
+    if (typeof window === 'undefined') return [];
     const data = localStorage.getItem(HISTORY_KEY);
     if (!data) return [];
     return JSON.parse(data);

@@ -1100,6 +1100,7 @@ export const languageNames: Record<Language, string> = {
 };
 
 export const getStoredLanguage = (): Language => {
+  if (typeof window === 'undefined') return 'en';
   const stored = localStorage.getItem('quicktransfer_language');
   if (stored && stored in translations) {
     return stored as Language;

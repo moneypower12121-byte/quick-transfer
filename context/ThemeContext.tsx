@@ -13,19 +13,31 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const stored = localStorage.getItem('quicktransfer_theme');
-    return (stored as Theme) || 'light';
-  });
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    localStorage.setItem('quicktransfer_theme', theme);
-    
-    // Add/remove dark class on document
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    try {
+      const stored = typeof window !== 'undefined' ? localStorage.getItem('quicktransfer_theme') : null;
+      if (stored === 'dark' || stored === 'light') {
+        setTheme(stored);
+      } else if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+      }
+    } catch (e) {
+      // Ignore
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('quicktransfer_theme', theme);
+      
+      // Add/remove dark class on document
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }, [theme]);
 
