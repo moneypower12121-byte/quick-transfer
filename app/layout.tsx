@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://quicktransfer.site"),
 
   // ── Core ──────────────────────────────────────────────────────────────────
-  title: "QuickTransfer – Send Files Free, No Sign-Up",
+  title: "QuickTransfer - Send Files Free, No Sign-Up",
   description:
     "Share files online instantly — no account, no hassle. QuickTransfer lets you send documents, photos & videos securely in seconds. Try it free now.",
   keywords:
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   // ── Open Graph ────────────────────────────────────────────────────────────
   openGraph: {
     type: "website",
-    title: "QuickTransfer – Send Files Free, No Sign-Up",
+    title: "QuickTransfer - Send Files Free, No Sign-Up",
     description:
       "Send files instantly with a secure 6-digit code. No login, no registration. Works on any device.",
     url: "https://quicktransfer.site/",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   // ── Twitter Card ──────────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "QuickTransfer – Send Files Free, No Sign-Up",
+    title: "QuickTransfer - Send Files Free, No Sign-Up",
     description:
       "Send files instantly with a secure 6-digit code. No login required. Works on any device.",
     images: ["/og-image.png"],
