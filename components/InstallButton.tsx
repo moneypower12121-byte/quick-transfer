@@ -98,3 +98,4 @@ const InstallButton: React.FC<InstallButtonProps> = ({ label = 'Install', classN
 };
 
 export default InstallButton;
+

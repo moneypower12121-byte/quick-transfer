@@ -4,9 +4,9 @@
 import React, { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Download, Share2, ArrowLeft, CheckCircle2, FileText, Info, FileCode, Paperclip, Check, Users, Clock, AlertTriangle } from 'lucide-react';
-import { TransferData } from '@/types';
-import { useLanguage } from '@/context/LanguageContext';
-import { getDataByCode } from '@/services/storage';
+import { TransferData } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import { getDataByCode } from '../services/storage';
 import DemoAd from './DemoAd';
 
 interface ResultViewProps {
@@ -215,3 +215,4 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
 };
 
 export default ResultView;
+

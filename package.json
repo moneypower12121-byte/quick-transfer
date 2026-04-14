@@ -7,10 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "generate-icons": "node scripts/generate-icons.cjs",
-    "electron:dev": "electron .",
-    "electron:build": "electron-builder --win --x64"
+    "lint": "next lint"
   },
   "dependencies": {
     "autoprefixer": "^10.4.27",
@@ -25,8 +22,6 @@
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
     "electron": "^26.0.0",
     "electron-builder": "^24.0.0",
     "sharp": "^0.34.5",
@@ -57,5 +52,20 @@
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true
     }
+  },
+  "reactSnap": {
+    "source": "dist",
+    "include": [
+      "/",
+      "/terms",
+      "/privacy",
+      "/help",
+      "/contact",
+      "/download"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }

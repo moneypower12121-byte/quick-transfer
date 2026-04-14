@@ -6,7 +6,5 @@
   "/help/page": "/help",
   "/page": "/",
   "/privacy/page": "/privacy",
-  "/robots.txt/route": "/robots.txt",
-  "/sitemap.xml/route": "/sitemap.xml",
   "/terms/page": "/terms"
 }

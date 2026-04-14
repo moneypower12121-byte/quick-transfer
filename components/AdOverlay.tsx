@@ -138,3 +138,4 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
 };
 
 export default AdOverlay;
+

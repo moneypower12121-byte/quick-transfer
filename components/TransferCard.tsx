@@ -1,7 +1,8 @@
+"use client";
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Plus, Download, FileText, X, Loader2, Users, Clock } from 'lucide-react';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TransferCardProps {
   type: 'send' | 'receive';
@@ -212,3 +213,4 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
 };
 
 export default TransferCard;
+

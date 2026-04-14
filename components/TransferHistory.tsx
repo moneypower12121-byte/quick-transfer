@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { History, Send, Download, Trash2, Clock, X, FileText } from 'lucide-react';
-import { getHistory, clearHistory, HistoryItem } from '@/services/history';
-import { useLanguage } from '@/context/LanguageContext';
+import { getHistory, clearHistory, HistoryItem } from '../services/history';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TransferHistoryProps {
   onCodeClick?: (code: string) => void;
@@ -156,3 +156,4 @@ const TransferHistory: React.FC<TransferHistoryProps> = ({ onCodeClick }) => {
 };
 
 export default TransferHistory;
+
