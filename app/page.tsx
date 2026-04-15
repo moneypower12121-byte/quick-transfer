@@ -151,23 +151,66 @@ export default function Page() {
             </div>
           </section>
 
-          {/* Detailed SEO Paragraph Section */}
-          <section className="py-24 max-w-4xl mx-auto border-t border-gray-100 dark:border-slate-800">
-             <div className="prose prose-lg dark:prose-invert max-w-none">
-                <h2 className="text-3xl font-black text-gray-800 dark:text-white mb-8">The Best Way to Send Large Files Online for Free</h2>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  In today's fast-paced digital world, sharing files should be as easy as sending a text message. Yet, many services require you to jump through hoops—creating accounts, verifying email addresses, and dodging invasive advertisements. QuickTransfer was built to solve this problem. Our platform provides a streamlined, browser-based solution for **sending large files online without login** or registration. Whether you need to transfer a high-resolution project to a client or send a collection of vacation photos to a friend, QuickTransfer handles it with speed and security.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  Our system utilizes a secure 6-digit code architecture. This means you don't have to share long, complicated URLs that can be intercepted or guessed. Instead, you get a short, memorable key that confirms you are the intended sender. Coupled with our **end-to-end encryption**, your data remains private and protected during the entire transit process. Once the recipient enters the code, the file is streamed directly to their device, ensuring the fastest possible download speeds regardless of geographic location.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  One of the standout features of QuickTransfer is its **cross-platform compatibility**. Since our tool runs entirely in the browser, it bridges the gap between different operating systems. You can effortlessly start a transfer on an Android smartphone and pick it up on a MacBook, or send complex zip archives from a Linux server to a Windows workstation. There are no native apps to download and no background processes to worry about—everything is contained within your secure browser session.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  Security is not just a feature; it's our foundation. QuickTransfer employs advanced temporary storage management. Unlike cloud storage providers that keep your data indefinitely, we treat your files as transient packets. You can set custom expiry times, and our automated cleanup scripts ensure that no shard of your data remains on our platform longer than necessary. This ephemeral approach makes QuickTransfer one of the most privacy-conscious **free file sharing tools** available today.
-                </p>
-             </div>
+          {/* Detailed SEO Feature Grid Section */}
+          <section className="py-24 relative">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 right-0 -translate-y-1/2 w-64 h-64 bg-red-500/5 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 left-0 translate-y-1/2 w-96 h-96 bg-pink-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 relative">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+                  The Best Way to Send <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500">Large Files Online</span> for Free
+                </h2>
+                <div className="h-1 w-20 bg-gradient-to-r from-red-500 to-pink-500 mx-auto rounded-full" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Feature 1: Simplicity */}
+                <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-14 h-14 bg-red-50 dark:bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Zap className="w-7 h-7 text-red-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">No Account, No Hassle</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    In today's fast-paced digital world, sharing files should be as easy as sending a text message. Many services require you to jump through hoops—creating accounts and verifying emails. QuickTransfer provides a streamlined, browser-based solution for <strong>sending large files online without login</strong> or registration.
+                  </p>
+                </div>
+
+                {/* Feature 2: Security */}
+                <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-pink-200 dark:hover:border-pink-500/30 transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-14 h-14 bg-pink-50 dark:bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="w-7 h-7 text-pink-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Secure 6-Digit Codes</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Our system utilizes a secure 6-digit code architecture. No long, complicated URLs that can be intercepted. Coupled with <strong>end-to-end encryption</strong>, your data remains protected. Once the recipient enters the code, the file is streamed directly, ensuring the fastest speeds.
+                  </p>
+                </div>
+
+                {/* Feature 3: Compatibility */}
+                <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-14 h-14 bg-red-50 dark:bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Smartphone className="w-7 h-7 text-red-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Cross-Platform Sync</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Our tool bridges the gap between operating systems. Effortlessly start a transfer on an Android smartphone and pick it up on a MacBook. No native apps to download and no background processes—everything is contained within your <strong>secure browser session</strong>.
+                  </p>
+                </div>
+
+                {/* Feature 4: Privacy */}
+                <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-pink-200 dark:hover:border-pink-500/30 transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-14 h-14 bg-pink-50 dark:bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="w-7 h-7 text-pink-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Ephemeral Storage</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    We treat your files as transient packets. Automated cleanup scripts ensure no shard of your data remains on our platform longer than necessary. This ephemeral approach makes QuickTransfer one of the most privacy-conscious <strong>free file sharing tools</strong> available today.
+                  </p>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
