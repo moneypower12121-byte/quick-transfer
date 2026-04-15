@@ -31,7 +31,7 @@ export default function HelpPage() {
   ];
 
   return (
-    <main className="flex-1 py-16 px-4">
+    <main className="flex-1 px-4 pt-32 pb-16">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center">
           <h1 className="text-4xl font-black text-gray-800 dark:text-white mb-4">Help Center</h1>

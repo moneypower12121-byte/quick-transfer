@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function DownloadPage() {
   return (
-    <main className="flex-1 py-16 px-4">
+    <main className="flex-1 px-4 pt-28 pb-16">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center">
           <h1 className="text-4xl font-black text-gray-800 dark:text-white mb-4">Download QuickTransfer</h1>
