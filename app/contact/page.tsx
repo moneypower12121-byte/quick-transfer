@@ -1,8 +1,9 @@
 import React from 'react';
 import { Mail, MessageSquare, Twitter } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
-  title: 'Contact Us - QuickTransfer',
   description: 'Get in touch with the QuickTransfer team for support or feedback.',
 };
 

@@ -2,8 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { Shield, Lock, Trash2, EyeOff, Globe, Server, UserCheck, ArrowRight } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
-  title: 'Security & Privacy — QuickTransfer',
   description: 'QuickTransfer uses end-to-end encryption and ephemeral storage to keep your files private. No accounts, no tracking, no data retained.',
 };
 

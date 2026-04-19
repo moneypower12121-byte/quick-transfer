@@ -16,6 +16,8 @@ import {
   ArrowRight
 } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
   title: 'Help Center - QuickTransfer Support',
   description: 'Learn how to send files online free without signup. Get support for secure file sharing, 6-digit code transfers, and troubleshooting.',

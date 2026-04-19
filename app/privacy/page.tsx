@@ -1,7 +1,8 @@
 import React from 'react';
 
+export const dynamic = 'force-static';
+
 export const metadata = {
-  title: 'Privacy Policy - QuickTransfer',
   description: 'Privacy policy for QuickTransfer. We value your data security and anonymity.',
 };
 
