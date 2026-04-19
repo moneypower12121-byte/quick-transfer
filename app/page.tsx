@@ -5,44 +5,8 @@ import { Rocket, Shield, Clock, Smartphone, FileUp, Zap } from 'lucide-react';
 export const dynamic = "force-static";
 
 export default function Page() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How to send files without login?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can use QuickTransfer to send files instantly without creating an account. Simply upload your file, receive a 6-digit code, and share it with the recipient."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is QuickTransfer free and secure?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, QuickTransfer is completely free to use. All transfers are encrypted, and files are automatically deleted after expiration or download to ensure your privacy."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the maximum file size limit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Currently, QuickTransfer supports files up to 100MB per transfer for free users. This is perfect for documents, photos, and high-quality videos."
-        }
-      }
-    ]
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-red-100 dark:bg-red-500/10 rounded-full blur-3xl opacity-50 -z-10 animate-pulse" />
