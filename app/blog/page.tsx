@@ -18,6 +18,15 @@ const blogPosts = [
     readTime: '12 min read',
     category: 'Guides',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    slug: 'send-large-files',
+    title: 'How to Send Large Files Without Email in 2026 (Free & No Account)',
+    excerpt: 'Sharing huge files? Learn how to send large files free without email or registration. Compare QuickTransfer, Google Drive, and Dropbox.',
+    date: 'April 19, 2026',
+    readTime: '10 min read',
+    category: 'Tutorials',
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
