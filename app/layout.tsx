@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   keywords:
     "send files online, free file transfer, no sign up, share files online instantly, secure file transfer, send large files, no login, file sharing online, data transfer, free file upload, link transfer, files between devices",
   authors: [{ name: "QuickTransfer" }],
+  icons: {
+    icon: '/icons/icon-192.png',
+    shortcut: '/icons/icon-192.png',
+    apple: '/icons/icon-192.png',
+  },
   robots: { index: true, follow: true },
 
   // ── Canonical ─────────────────────────────────────────────────────────────
@@ -152,6 +157,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Proactively adding icon links in head as a fallback for some browsers */}
+        <link rel="icon" href="/icons/icon-192.png" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
       <body className={inter.className}>
         <ThemeProvider>
