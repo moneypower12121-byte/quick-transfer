@@ -12,10 +12,12 @@ const Footer: React.FC = () => {
   const navLinks = [
     { href: '/', label: t.transfer },
     { href: '/help', label: t.howItWorks },
+    { href: '/blog', label: 'Blog' },
     { href: '/security', label: 'Security' },
     { href: '/privacy', label: t.privacy },
     { href: '/contact', label: t.contact },
   ]
+
   return (
     <footer className="bg-gray-50/50 dark:bg-slate-900/80 py-8 md:py-12 border-t border-gray-100 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4">

@@ -17,6 +17,7 @@ const Header: React.FC = () => {
   const navLinks = [
     { href: '/', label: t.transfer },
     { href: '/help', label: t.howItWorks },
+    { href: '/blog', label: 'Blog' },
     { href: '/security', label: 'Security' },
     { href: '/privacy', label: t.privacy },
     { href: '/contact', label: t.contact },
@@ -92,14 +93,7 @@ const Header: React.FC = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-700 animate-in slide-in-from-top-2 duration-200">
           <nav className="flex flex-col px-4 py-4 gap-1">
-            {[
-              { href: '/', label: t.transfer },
-              { href: '/download', label: 'Download' },
-              { href: '/help', label: t.howItWorks },
-              { href: '/security', label: 'Security' },
-              { href: '/privacy', label: t.privacy },
-              { href: '/contact', label: t.contact },
-            ].map(link => {
+            {navLinks.map(link => {
               const isActive = pathname === link.href;
               return (
                 <Link 
@@ -116,6 +110,17 @@ const Header: React.FC = () => {
                 </Link>
               );
             })}
+            <Link 
+              href="/download" 
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors ${
+                pathname === '/download'
+                  ? 'text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-500/10'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-800'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Download App
+            </Link>
           </nav>
         </div>
       )}
