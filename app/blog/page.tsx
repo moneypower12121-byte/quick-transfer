@@ -17,7 +17,7 @@ const blogPosts = [
     date: 'April 19, 2026',
     readTime: '12 min read',
     category: 'Guides',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800'
+    image: '/blog/wetransfer-alternatives.png'
   },
   {
     slug: 'send-large-files',
@@ -26,7 +26,7 @@ const blogPosts = [
     date: 'April 19, 2026',
     readTime: '10 min read',
     category: 'Tutorials',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800'
+    image: '/blog/send-large-files.png'
   }
 ];
 
