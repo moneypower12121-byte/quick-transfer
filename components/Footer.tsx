@@ -9,14 +9,13 @@ import { useLanguage } from '@/context/LanguageContext'
 const Footer: React.FC = () => {
   const { t } = useLanguage()
   const pathname = usePathname()
-
   const navLinks = [
+    { href: '/', label: t.transfer },
     { href: '/help', label: t.howItWorks },
-    { href: '/terms', label: t.terms },
+    { href: '/security', label: 'Security' },
     { href: '/privacy', label: t.privacy },
     { href: '/contact', label: t.contact },
   ]
-
   return (
     <footer className="bg-gray-50/50 dark:bg-slate-900/80 py-8 md:py-12 border-t border-gray-100 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4">
@@ -25,7 +24,7 @@ const Footer: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="bg-gradient-to-br from-red-500 to-pink-500 p-1.5 rounded-lg">
-              <Rocket className="w-4 h-4 text-white" />
+              <Rocket className="w-4 h-4 text-white" aria-label="QuickTransfer logo" />
             </div>
             <span className="font-bold text-gray-700 dark:text-white">QuickTransfer</span>
           </Link>
@@ -61,7 +60,7 @@ const Footer: React.FC = () => {
         {/* Desktop Footer */}
         <div className="hidden md:flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
-            <Rocket className="w-5 h-5 dark:text-white" />
+            <Rocket className="w-5 h-5 dark:text-white" aria-label="QuickTransfer logo" />
             <span className="font-bold dark:text-white">QuickTransfer</span>
           </Link>
           <div className="flex gap-8 text-sm font-medium">

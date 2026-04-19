@@ -82,7 +82,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
             className="flex-1 min-h-[160px] border-2 border-dashed border-gray-100 dark:border-slate-600 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:bg-pink-50 dark:hover:bg-red-500/10 hover:border-red-200 dark:hover:border-red-500/50 group transition-all"
           >
             <div className="bg-red-50 dark:bg-red-500/20 p-4 rounded-full group-hover:bg-red-100 dark:group-hover:bg-red-500/30 transition-colors mb-3">
-              <Plus className="w-10 h-10 text-red-500 dark:text-red-400" />
+              <Plus className="w-10 h-10 text-red-500 dark:text-red-400" aria-label="upload file icon" />
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Click to select files</p>
             <p className="text-xs text-gray-400 dark:text-gray-500">Maximum total size: 100MB</p>
@@ -100,7 +100,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
               {selectedFiles.map((file, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <div className="bg-blue-100 dark:bg-blue-500/20 p-2 rounded-lg">
-                    <FileText className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <FileText className="w-6 h-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-gray-700 dark:text-gray-100 truncate max-w-[150px]">{file.name}</p>
@@ -110,7 +110,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
                     setSelectedFiles(selectedFiles.filter((_, i) => i !== idx));
                     setFileError('');
                   }} className="text-gray-400 hover:text-red-500">
-                    <X className="w-5 h-5" />
+                    <X className="w-5 h-5" aria-label="remove file" />
                   </button>
                 </div>
               ))}
@@ -123,7 +123,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
               setFileError('');
               if (fileInputRef.current) fileInputRef.current.value = '';
             }} className="mt-3 text-gray-400 hover:text-red-500">
-              <X className="w-5 h-5" /> Remove all
+              <X className="w-5 h-5" aria-label="remove all files" /> Remove all
             </button>
           </div>
         )}
@@ -141,7 +141,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
         {selectedFiles.length > 0 && (
           <div className="bg-gray-50 dark:bg-slate-700/50 rounded-xl p-4 border border-gray-100 dark:border-slate-600">
             <div className="flex items-center gap-2 mb-3">
-              <Clock className="w-4 h-4 text-red-500" />
+              <Clock className="w-4 h-4 text-red-500" aria-label="secure file sharing timer" />
               <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{t.expiryTime || 'Expiry Time'}</span>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -169,7 +169,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
             selectedFiles.length > 0 && !loading ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-lg shadow-red-500/25 dark:shadow-red-500/20' : 'bg-gray-200 dark:bg-slate-700 cursor-not-allowed text-gray-400 dark:text-gray-500'
           }`}
         >
-          {loading && <Loader2 className="w-5 h-5 animate-spin" />}
+          {loading && <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />}
           {loading ? t.sending : t.sendFile.split(' ')[0]}
         </button>
       </div>
@@ -195,7 +195,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
           value={code}
           onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
         />
-        <Download className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-300 dark:text-gray-500 group-focus-within:text-red-400" />
+        <Download className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-300 dark:text-gray-500 group-focus-within:text-red-400" aria-label="download file instantly" />
       </div>
 
       <button 
@@ -205,7 +205,7 @@ const TransferCard: React.FC<TransferCardProps> = ({ type, onSend, onReceive, lo
           code.length === 6 && !loading ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-lg shadow-red-500/25 dark:shadow-red-500/20' : 'bg-gray-200 dark:bg-slate-700 cursor-not-allowed text-gray-400 dark:text-gray-500'
         }`}
       >
-        {loading && <Loader2 className="w-5 h-5 animate-spin" />}
+        {loading && <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />}
         {loading ? t.receiving : t.receive}
       </button>
     </div>

@@ -18,19 +18,19 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <a href="mailto:support@quicktransfer.site" className="flex flex-col items-center p-8 bg-gray-50 dark:bg-slate-700/50 rounded-2xl hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors">
-            <Mail className="w-8 h-8 text-red-500 mb-4" />
+            <Mail className="w-8 h-8 text-red-500 mb-4" aria-label="contact support via email" />
             <h3 className="font-bold text-gray-800 dark:text-white">Email</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">Reach out via email</p>
           </a>
           
           <div className="flex flex-col items-center p-8 bg-gray-50 dark:bg-slate-700/50 rounded-2xl">
-            <Twitter className="w-8 h-8 text-red-500 mb-4" />
+            <Twitter className="w-8 h-8 text-red-500 mb-4" aria-label="follow us on twitter" />
             <h3 className="font-bold text-gray-800 dark:text-white">Twitter</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">Follow us for updates</p>
           </div>
 
           <div className="flex flex-col items-center p-8 bg-gray-50 dark:bg-slate-700/50 rounded-2xl">
-            <MessageSquare className="w-8 h-8 text-red-500 mb-4" />
+            <MessageSquare className="w-8 h-8 text-red-500 mb-4" aria-label="live support chat" />
             <h3 className="font-bold text-gray-800 dark:text-white">Live Support</h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">Coming soon</p>
           </div>

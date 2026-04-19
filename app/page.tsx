@@ -30,7 +30,7 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="bg-white dark:bg-slate-800/50 p-8 rounded-3xl custom-shadow border border-gray-100 dark:border-slate-700/50 text-center group hover:bg-red-50/50 dark:hover:bg-red-500/5 transition-all">
                 <div className="bg-red-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:rotate-12 transition-transform shadow-lg shadow-red-500/20">
-                  <FileUp className="w-8 h-8 text-white" />
+                  <FileUp className="w-8 h-8 text-white" aria-label="upload file icon" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">1. Upload Your File</h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -39,7 +39,7 @@ export default function Page() {
               </div>
               <div className="bg-white dark:bg-slate-800/50 p-8 rounded-3xl custom-shadow border border-gray-100 dark:border-slate-700/50 text-center group hover:bg-red-50/50 dark:hover:bg-red-500/5 transition-all">
                 <div className="bg-red-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:-rotate-12 transition-transform shadow-lg shadow-red-500/20">
-                  <Zap className="w-8 h-8 text-white" />
+                  <Zap className="w-8 h-8 text-white" aria-label="6-digit secure transfer code" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">2. Get Your Code</h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -48,7 +48,7 @@ export default function Page() {
               </div>
               <div className="bg-white dark:bg-slate-800/50 p-8 rounded-3xl custom-shadow border border-gray-100 dark:border-slate-700/50 text-center group hover:bg-red-50/50 dark:hover:bg-red-500/5 transition-all">
                 <div className="bg-red-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transform group-hover:rotate-12 transition-transform shadow-lg shadow-red-500/20">
-                  <Smartphone className="w-8 h-8 text-white" />
+                  <Smartphone className="w-8 h-8 text-white" aria-label="transfer files between devices" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">3. Download Instantly</h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -66,7 +66,7 @@ export default function Page() {
                 <div className="space-y-6">
                   <div className="flex gap-4">
                     <div className="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm h-fit">
-                      <Shield className="w-6 h-6 text-red-500" />
+                      <Shield className="w-6 h-6 text-red-500" aria-label="secure encrypted file transfer" />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-800 dark:text-white">Privacy First Architecture</h4>
@@ -75,7 +75,7 @@ export default function Page() {
                   </div>
                   <div className="flex gap-4">
                     <div className="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm h-fit">
-                      <Clock className="w-6 h-6 text-red-500" />
+                      <Clock className="w-6 h-6 text-red-500" aria-label="6-digit secure transfer code" />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-800 dark:text-white">Zero Wait Time</h4>
@@ -84,7 +84,7 @@ export default function Page() {
                   </div>
                   <div className="flex gap-4">
                     <div className="bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm h-fit">
-                      <Rocket className="w-6 h-6 text-red-500" />
+                      <Rocket className="w-6 h-6 text-red-500" aria-label="fast file transfer logo" />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-gray-800 dark:text-white">Multi-Device Compatible</h4>
@@ -133,7 +133,7 @@ export default function Page() {
                 {/* Feature 1: Simplicity */}
                 <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-red-50 dark:bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Zap className="w-7 h-7 text-red-500" />
+                    <Zap className="w-7 h-7 text-red-500" aria-label="upload file icon" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">No Account, No Hassle</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -144,7 +144,7 @@ export default function Page() {
                 {/* Feature 2: Security */}
                 <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-pink-200 dark:hover:border-pink-500/30 transition-all duration-300 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-pink-50 dark:bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-7 h-7 text-pink-500" />
+                    <Shield className="w-7 h-7 text-pink-500" aria-label="secure encrypted file transfer" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Secure 6-Digit Codes</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -155,7 +155,7 @@ export default function Page() {
                 {/* Feature 3: Compatibility */}
                 <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-red-200 dark:hover:border-red-500/30 transition-all duration-300 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-red-50 dark:bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Smartphone className="w-7 h-7 text-red-500" />
+                    <Smartphone className="w-7 h-7 text-red-500" aria-label="transfer files between devices" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Cross-Platform Sync</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -166,7 +166,7 @@ export default function Page() {
                 {/* Feature 4: Privacy */}
                 <div className="group bg-white dark:bg-slate-800/50 p-8 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-slate-700/50 hover:border-pink-200 dark:hover:border-pink-500/30 transition-all duration-300 hover:-translate-y-1">
                   <div className="w-14 h-14 bg-pink-50 dark:bg-pink-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Clock className="w-7 h-7 text-pink-500" />
+                    <Clock className="w-7 h-7 text-pink-500" aria-label="secure file sharing timer" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Ephemeral Storage</h3>
                   <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

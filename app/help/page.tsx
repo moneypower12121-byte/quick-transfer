@@ -26,47 +26,47 @@ export default function HelpPage() {
     {
       q: "How do I share a file?",
       a: "Sharing is designed to be effortless. Simply drag and drop your file into the 'Send' card on our homepage. Once the upload is complete, our system generates a unique 6-digit code transfer key. You can then copy this code or the direct link to share with your recipient instantly via any messaging app.",
-      icon: <Zap className="w-6 h-6 text-red-500" />
+      icon: <Zap className="w-6 h-6 text-red-500" aria-label="upload file icon" />
     },
     {
       q: "Is it really secure?",
       a: "Yes, security is our core priority. Every file you upload is protected by end-to-end encryption during the transit process. The secure 6-digit code acts as a private key that only the recipient can use to access the data. We use industry-standard protocols to ensure your secure file sharing experience is never compromised.",
-      icon: <Shield className="w-6 h-6 text-red-500" />
+      icon: <Shield className="w-6 h-6 text-red-500" aria-label="secure encrypted file transfer" />
     },
     {
       q: "What is the maximum file size?",
       a: "Currently, QuickTransfer allows you to send files up to 100MB per transfer for free. This limit is perfect for documents, photographs, and even high-quality short videos. If you need to send larger archives, we suggest splitting them into multiple transfers to maintain optimal upload speeds.",
-      icon: <Book className="w-6 h-6 text-red-500" />
+      icon: <Book className="w-6 h-6 text-red-500" aria-hidden="true" />
     },
     {
       q: "How long do codes last?",
       a: "By default, your transfer codes and files expire exactly 10 minutes after a successful upload. This auto-deletion policy ensures that your data doesn't sit on our servers indefinitely, providing a truly ephemeral and private way to send files online free without leaving a digital footprint.",
-      icon: <HelpCircle className="w-6 h-6 text-red-500" />
+      icon: <HelpCircle className="w-6 h-6 text-red-500" aria-hidden="true" />
     },
     {
       q: "What file types can I send?",
       a: "QuickTransfer is extremely versatile and supports almost any file format imaginable. From standard PDF and Word documents to complex ZIP archives, MP4 videos, and RAW image files. As long as the file is within the 100MB limit, our platform can process and deliver it securely.",
-      icon: <FileText className="w-6 h-6 text-red-500" />
+      icon: <FileText className="w-6 h-6 text-red-500" aria-hidden="true" />
     },
     {
       q: "Is there a download limit per code?",
       a: "To ensure your data remains secure and private, each 6-digit code is typically restricted to a single successful download session. Once the recipient has successfully retrieved the file, the code and the underlying data are flagged for immediate deletion from our temporary staging servers.",
-      icon: <Download className="w-6 h-6 text-red-500" />
+      icon: <Download className="w-6 h-6 text-red-500" aria-label="download file instantly" />
     },
     {
       q: "What happens if the recipient doesn't download in time?",
       a: "If the 10-minute window closes before the recipient enters the code, the transfer will automatically expire for security reasons. In this case, you will simply need to upload the file again on the homepage to generate a fresh, new code to share.",
-      icon: <Clock className="w-6 h-6 text-red-500" />
+      icon: <Clock className="w-6 h-6 text-red-500" aria-label="6-digit secure transfer code" />
     },
     {
       q: "Can I use QuickTransfer on mobile?",
       a: "Absolutely! QuickTransfer is a progressive web-based tool, meaning it works flawlessly on any smartphone or tablet browser. Whether you are on iOS or Android, you can enjoy a seamless no sign-up file transfer experience without ever needing to download a native application.",
-      icon: <Smartphone className="w-6 h-6 text-red-500" />
+      icon: <Smartphone className="w-6 h-6 text-red-500" aria-label="transfer files between devices" />
     },
     {
       q: "Is QuickTransfer safe for sensitive documents?",
       a: "We have built our architecture around the principle of zero-knowledge sharing. Since we don't ask for your email or personal details, and all files are encrypted and automatically purged, QuickTransfer is one of the safest platforms for sharing transient, sensitive documents that shouldn't live in the cloud forever.",
-      icon: <Lock className="w-6 h-6 text-red-500" />
+      icon: <Lock className="w-6 h-6 text-red-500" aria-label="secure encrypted file transfer" />
     }
   ];
 
@@ -74,17 +74,17 @@ export default function HelpPage() {
     {
       title: "My code is not working",
       desc: "Double-check the 6 digits carefully. Codes are case-sensitive where applicable and expire after 10 minutes. If it fails, the file has likely been deleted for your protection.",
-      icon: <AlertCircle className="w-5 h-5" />
+      icon: <AlertCircle className="w-5 h-5" aria-hidden="true" />
     },
     {
       title: "File upload is stuck",
       desc: "This is usually caused by a momentary loss of internet connection. Try refreshing the browser and restarting the upload; our system handles resume-style attempts where possible.",
-      icon: <RefreshCw className="w-5 h-5" />
+      icon: <RefreshCw className="w-5 h-5" aria-hidden="true" />
     },
     {
       title: "Transfer was slow",
       desc: "Upload speed depends on your local internet connection. For the best experience, ensure you are on a stable Wi-Fi network rather than a congested mobile data connection.",
-      icon: <WifiOff className="w-5 h-5" />
+      icon: <WifiOff className="w-5 h-5" aria-hidden="true" />
     }
   ];
 

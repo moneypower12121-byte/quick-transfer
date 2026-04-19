@@ -14,10 +14,10 @@ const Header: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  
   const navLinks = [
     { href: '/', label: t.transfer },
     { href: '/help', label: t.howItWorks },
+    { href: '/security', label: 'Security' },
     { href: '/privacy', label: t.privacy },
     { href: '/contact', label: t.contact },
   ];
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className="bg-gradient-to-br from-red-500 to-pink-500 p-1.5 rounded-lg shadow-lg shadow-red-500/20">
-            <Rocket className="w-8 h-8 text-white" />
+            <Rocket className="w-8 h-8 text-white" aria-label="QuickTransfer logo" />
           </div>
           <span className="text-xl font-bold text-gray-800 dark:text-white tracking-tight">QuickTransfer</span>
         </Link>
@@ -96,6 +96,7 @@ const Header: React.FC = () => {
               { href: '/', label: t.transfer },
               { href: '/download', label: 'Download' },
               { href: '/help', label: t.howItWorks },
+              { href: '/security', label: 'Security' },
               { href: '/privacy', label: t.privacy },
               { href: '/contact', label: t.contact },
             ].map(link => {

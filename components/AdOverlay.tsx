@@ -79,13 +79,13 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
         {/* Ad Header */}
         <div className="bg-gradient-to-r from-red-500 to-pink-500 p-4 flex items-center justify-between">
           <div className="flex items-center gap-2 text-white">
-            <Zap className="w-5 h-5" />
+            <Zap className="w-5 h-5" aria-hidden="true" />
             <span className="font-bold text-sm">{t.sponsored}</span>
           </div>
           <div className="flex items-center gap-3">
             {!canSkip ? (
               <div className="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full">
-                <Clock className="w-4 h-4 text-white" />
+                <Clock className="w-4 h-4 text-white" aria-hidden="true" />
                 <span className="text-white font-bold text-sm">{countdown}s</span>
               </div>
             ) : (
@@ -93,7 +93,7 @@ const AdOverlay: React.FC<AdOverlayProps> = ({ onComplete, adType }) => {
                 onClick={onComplete}
                 className="flex items-center gap-1 bg-white text-red-500 px-4 py-1.5 rounded-full font-bold text-sm hover:bg-gray-100 transition-all"
               >
-                {t.skip} <X className="w-4 h-4" />
+                {t.skip} <X className="w-4 h-4" aria-label="skip ad" />
               </button>
             )}
           </div>

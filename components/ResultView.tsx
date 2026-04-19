@@ -77,11 +77,11 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
     <div className="bg-white dark:bg-slate-800/80 dark:backdrop-blur-xl dark:border dark:border-white/10 rounded-3xl p-8 custom-shadow w-full max-w-lg mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="flex items-center justify-between mb-8">
         <button onClick={onBack} className="text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors flex items-center gap-1 group">
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" aria-label="go back" />
           <span>{t.transferAnother}</span>
         </button>
         <div className="flex items-center gap-2 text-green-500 dark:text-green-400">
-          <CheckCircle2 className="w-5 h-5" />
+          <CheckCircle2 className="w-5 h-5" aria-hidden="true" />
           <span className="font-semibold">{t.fileReady}</span>
         </div>
       </div>
@@ -92,7 +92,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
           {isExpired ? (
             <div className="py-8">
               <div className="bg-red-50 dark:bg-red-500/20 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-red-200 dark:border-red-500/30">
-                <AlertTriangle className="w-10 h-10 text-red-500 dark:text-red-400" />
+                <AlertTriangle className="w-10 h-10 text-red-500 dark:text-red-400" aria-hidden="true" />
               </div>
               <h3 className="text-2xl font-black text-gray-800 dark:text-white mb-2">{t.codeExpired || 'Code Expired'}</h3>
               <p className="text-gray-500 dark:text-gray-400 mb-6">{t.codeExpiredDesc || 'This transfer code is no longer valid.'}</p>
@@ -113,7 +113,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
               {/* Time Remaining */}
               <div className="bg-orange-50 dark:bg-orange-500/20 rounded-xl p-3 border border-orange-200 dark:border-orange-500/30 mb-8">
                 <div className="flex items-center justify-center gap-2 text-orange-600 dark:text-orange-400">
-                  <Clock className="w-4 h-4" />
+                  <Clock className="w-4 h-4" aria-label="secure file sharing timer" />
                   <span className="text-2xl font-black">{formatTime(timeRemaining)}</span>
                 </div>
                 <p className="text-xs text-orange-500 dark:text-orange-400 mt-1">{t.timeLeft || 'Time Left'}</p>
@@ -131,14 +131,14 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
                   onClick={handleCopyCode}
                   className="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:from-red-600 hover:to-pink-600 transition-all shadow-lg shadow-red-500/25 dark:shadow-red-500/20"
                 >
-                  <Share2 className="w-5 h-5" />
+                  <Share2 className="w-5 h-5" aria-label="share transfer code" />
                   {copied ? t.copied : t.copyCode}
                 </button>
                 <button 
                   onClick={onBack}
                   className="w-full bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-200 font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-600 transition-all"
                 >
-                  <Check className="w-5 h-5" />
+                  <Check className="w-5 h-5" aria-hidden="true" />
                   {t.transferAnother}
                 </button>
               </div>
@@ -148,7 +148,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
       ) : (
         <div className="text-center">
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-500/20 dark:to-indigo-500/20 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-blue-100 dark:border-blue-500/30">
-            <FileText className="w-10 h-10 text-blue-500 dark:text-blue-400" />
+            <FileText className="w-10 h-10 text-blue-500 dark:text-blue-400" aria-hidden="true" />
           </div>
           
           <div className="mb-8">
@@ -163,7 +163,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="bg-white dark:bg-slate-800 p-2 rounded-lg shadow-sm">
-                  <Paperclip className="w-4 h-4 text-gray-400" />
+                  <Paperclip className="w-4 h-4 text-gray-400" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase">Filename</p>
@@ -173,7 +173,7 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
 
               <div className="flex items-center gap-3">
                 <div className="bg-white dark:bg-slate-800 p-2 rounded-lg shadow-sm">
-                  <FileCode className="w-4 h-4 text-gray-400" />
+                  <FileCode className="w-4 h-4 text-gray-400" aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase">MIME Type</p>
@@ -188,14 +188,14 @@ const ResultView: React.FC<ResultViewProps> = ({ data, mode, onBack }) => {
               onClick={downloadFile}
               className="w-full bg-gradient-to-r from-red-500 to-pink-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:from-red-600 hover:to-pink-600 transition-all shadow-lg shadow-red-500/25 dark:shadow-red-500/20 transform active:scale-[0.98]"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-5 h-5" aria-label="download file instantly" />
               {t.downloadFile}
             </button>
             <button 
               onClick={onBack}
               className="w-full bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-200 font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-200 dark:hover:bg-slate-600 transition-all"
             >
-              <Check className="w-5 h-5" />
+              <Check className="w-5 h-5" aria-hidden="true" />
               {t.transferAnother}
             </button>
           </div>

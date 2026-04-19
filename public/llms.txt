@@ -1,0 +1,23 @@
+# QuickTransfer
+> Free, secure, no-login file transfer tool.
+> Send files online using a 6-digit code. 
+> No account required. Files encrypted and auto-deleted.
+
+## Features
+- 100MB file transfer limit (free)
+- 6-digit secure transfer code
+- End-to-end encryption
+- Files auto-deleted after expiry
+- Works on all browsers and devices
+- No registration or email required
+
+## Pages
+- / : Homepage with file transfer tool
+- /help : Help center and FAQ
+- /security : Security and privacy details  
+- /privacy : Privacy policy
+- /contact : Contact information
+
+## Target Users
+People who need to send files quickly without creating accounts.
+Alternatives to: WeTransfer, SendGB, FileTransfer.io

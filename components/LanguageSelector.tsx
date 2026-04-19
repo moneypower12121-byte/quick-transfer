@@ -29,9 +29,9 @@ const LanguageSelector: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-300 hover:text-red-500 transition-colors px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
       >
-        <Globe className="w-4 h-4" />
+        <Globe className="w-4 h-4" aria-label="select language" />
         <span className="hidden sm:inline">{languageNames[language]}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
 
       {isOpen && (
@@ -48,7 +48,7 @@ const LanguageSelector: React.FC = () => {
               }`}
             >
               <span>{languageNames[lang]}</span>
-              {language === lang && <Check className="w-4 h-4" />}
+              {language === lang && <Check className="w-4 h-4" aria-hidden="true" />}
             </button>
           ))}
         </div>
