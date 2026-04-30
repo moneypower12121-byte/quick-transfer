@@ -11,6 +11,15 @@ export const metadata = {
 
 const blogPosts = [
   {
+    slug: 'file-sharing-mistakes',
+    title: '7 File Sharing Mistakes That Put Your Data at Risk',
+    excerpt: 'Are you making these dangerous file sharing mistakes? Learn how to send files securely without exposing your data. Tip #4 surprises most people.',
+    date: 'May 1, 2026',
+    readTime: '7 min read',
+    category: 'Security',
+    image: '/blog/file-sharing-mistakes.png'
+  },
+  {
     slug: 'easiest-way-to-share-files',
     title: 'Easiest Way to Share Files Online (No Tech Skills Needed)',
     excerpt: 'Need to send a file to someone who isn\'t tech-savvy? QuickTransfer is the simplest file sharing tool online. Just a 6-digit code — no apps, no accounts needed.',
