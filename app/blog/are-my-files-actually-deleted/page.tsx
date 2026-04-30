@@ -12,7 +12,8 @@ import {
   HelpCircle,
   CheckCircle2,
   AlertTriangle,
-  FileX
+  FileX,
+  Mail
 } from 'lucide-react';
 import Link from 'next/link';
 
