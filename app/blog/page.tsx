@@ -11,6 +11,15 @@ export const metadata = {
 
 const blogPosts = [
   {
+    slug: 'cloud-storage-vs-file-sharing',
+    title: "Cloud Storage vs File Sharing: What's the Difference? (2026 Guide)",
+    excerpt: "Google Drive vs QuickTransfer — what's the difference between cloud storage and file sharing? Learn which tool to use and when for maximum efficiency and security.",
+    date: 'April 30, 2026',
+    readTime: '8 min read',
+    category: 'Guides',
+    image: '/blog/cloud-storage-vs-file-sharing.png'
+  },
+  {
     slug: 'file-sharing-mistakes',
     title: '7 File Sharing Mistakes That Put Your Data at Risk',
     excerpt: 'Are you making these dangerous file sharing mistakes? Learn how to send files securely without exposing your data. Tip #4 surprises most people.',
