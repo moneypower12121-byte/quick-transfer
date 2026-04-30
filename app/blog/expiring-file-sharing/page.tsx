@@ -34,7 +34,7 @@ export default function ExpiringFileSharingPost() {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "How to Share Files With Expiry Dates (Auto-Expiring Links That Protect Your Privacy)",
-    "image": "https://images.unsplash.com/photo-1508921334179-46344b5d6342?auto=format&fit=crop&q=80&w=1200",
+    "image": "https://images.unsplash.com/photo-1501139083538-0139583c060f?q=80&w=1200&auto=format&fit=crop",
     "author": {
       "@type": "Organization",
       "name": "QuickTransfer Team"

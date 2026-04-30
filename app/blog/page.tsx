@@ -17,7 +17,7 @@ const blogPosts = [
     date: 'May 1, 2026',
     readTime: '5 min read',
     category: 'Productivity',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop'
   },
   {
     slug: 'expiring-file-sharing',
@@ -26,7 +26,7 @@ const blogPosts = [
     date: 'May 1, 2026',
     readTime: '6 min read',
     category: 'Security',
-    image: 'https://images.unsplash.com/photo-1508921334179-46344b5d6342?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1501139083538-0139583c060f?q=80&w=1200&auto=format&fit=crop'
   },
   {
     slug: 'are-my-files-actually-deleted',
@@ -35,7 +35,7 @@ const blogPosts = [
     date: 'April 30, 2026',
     readTime: '7 min read',
     category: 'Security',
-    image: 'https://images.unsplash.com/photo-1590494165264-1ebe3602eb80?auto=format&fit=crop&q=80&w=1200'
+    image: 'https://images.unsplash.com/photo-1590494165264-1ebe3602eb80?q=80&w=1200&auto=format&fit=crop'
   },
   {
     slug: 'cloud-storage-vs-file-sharing',
