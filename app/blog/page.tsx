@@ -11,6 +11,15 @@ export const metadata = {
 
 const blogPosts = [
   {
+    slug: 'fastest-way-to-share-files',
+    title: "Fastest Way to Share Multiple Files Online Free (No Sign-Up, Instant Transfer)",
+    excerpt: "What's the fastest way to share multiple files online? Skip the email attachments and slow upload links. Here's the quickest method in 2026 — free and no account needed.",
+    date: 'May 1, 2026',
+    readTime: '5 min read',
+    category: 'Productivity',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
     slug: 'expiring-file-sharing',
     title: "How to Share Files With Expiry Dates (Links That Auto-Expire in 2026)",
     excerpt: "Want to share files that automatically expire? Learn how to set expiration dates on shared files to protect your privacy and prevent unauthorized access.",
