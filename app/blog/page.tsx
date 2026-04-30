@@ -11,6 +11,15 @@ export const metadata = {
 
 const blogPosts = [
   {
+    slug: 'easiest-way-to-share-files',
+    title: 'Easiest Way to Share Files Online (No Tech Skills Needed)',
+    excerpt: 'Need to send a file to someone who isn\'t tech-savvy? QuickTransfer is the simplest file sharing tool online. Just a 6-digit code — no apps, no accounts needed.',
+    date: 'April 30, 2026',
+    readTime: '4 min read',
+    category: 'Tutorials',
+    image: '/blog/easiest-way-to-share-files.png'
+  },
+  {
     slug: 'self-destructing-file-transfer',
     title: 'Self-Destructing File Transfer — Auto-Delete in 10 Min',
     excerpt: 'Send files that automatically delete after download. QuickTransfer creates self-destructing transfers with a 6-digit code. No account needed. 100% free.',
