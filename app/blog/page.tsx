@@ -9,7 +9,18 @@ export const metadata = {
   description: 'Learn about safe file sharing, WeTransfer alternatives, and the future of anonymous data transfer. Expert tips for sending files online free.',
 };
 
-
+const blogPosts = [
+  {
+    slug: 'self-destructing-file-transfer',
+    title: 'Self-Destructing File Transfer — Auto-Delete in 10 Min',
+    excerpt: 'Send files that automatically delete after download. QuickTransfer creates self-destructing transfers with a 6-digit code. No account needed. 100% free.',
+    date: 'April 29, 2026',
+    readTime: '6 min read',
+    category: 'Security',
+    image: '/blog/self-destructing-file-transfer.png'
+  },
+  {
+    slug: 'anonymous-file-sharing',
     title: 'Anonymous File Sharing Free — No Account Needed',
     excerpt: 'Share files anonymously online with zero registration. QuickTransfer lets you send files privately using a secure 6-digit code. No email, no tracking, no ads.',
     date: 'April 28, 2026',
