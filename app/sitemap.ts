@@ -29,8 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/blog/wetransfer-alternatives`,
+
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -38,12 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/blog/send-large-files`,
       lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/blog/anonymous-file-sharing`,
-      lastModified: new Date('2026-04-28'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
