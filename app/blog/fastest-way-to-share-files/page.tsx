@@ -12,7 +12,8 @@ import {
   AlertCircle,
   HelpCircle,
   Timer,
-  ExternalLink
+  ExternalLink,
+  Globe
 } from 'lucide-react';
 import Link from 'next/link';
 
