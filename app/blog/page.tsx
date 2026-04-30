@@ -11,6 +11,15 @@ export const metadata = {
 
 const blogPosts = [
   {
+    slug: 'are-my-files-actually-deleted',
+    title: "Are My Shared Files Actually Deleted? The Shocking Truth (2026)",
+    excerpt: "When you delete a shared file, is it really gone? The truth might surprise you. Learn how file deletion actually works and which tools guarantee permanent deletion.",
+    date: 'April 30, 2026',
+    readTime: '7 min read',
+    category: 'Security',
+    image: 'https://images.unsplash.com/photo-1590494165264-1ebe3602eb80?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
     slug: 'cloud-storage-vs-file-sharing',
     title: "Cloud Storage vs File Sharing: What's the Difference? (2026 Guide)",
     excerpt: "Google Drive vs QuickTransfer — what's the difference between cloud storage and file sharing? Learn which tool to use and when for maximum efficiency and security.",
