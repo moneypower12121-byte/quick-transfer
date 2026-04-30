@@ -32,6 +32,6 @@ export const config = {
      * - icons (PWA icons)
      * - blog (if you want to keep them static without middleware interference, but usually fine)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|icons|.*\\.png$).*)',
+
   ],
 };
