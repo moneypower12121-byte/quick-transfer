@@ -9,7 +9,18 @@ export const metadata = {
   description: 'Learn about safe file sharing, WeTransfer alternatives, and the future of anonymous data transfer. Expert tips for sending files online free.',
 };
 
-
+const blogPosts = [
+  {
+    slug: 'anonymous-file-sharing',
+    title: 'Anonymous File Sharing Free — No Account Needed',
+    excerpt: 'Share files anonymously online with zero registration. QuickTransfer lets you send files privately using a secure 6-digit code. No email, no tracking, no ads.',
+    date: 'April 28, 2026',
+    readTime: '5 min read',
+    category: 'Privacy',
+    image: '/blog/anonymous-file-sharing.png'
+  },
+  {
+    slug: 'wetransfer-alternatives',
     title: '5 Best Free WeTransfer Alternatives in 2026 (No Sign-Up Required)',
     excerpt: 'Looking for a WeTransfer alternative? Compare the top 5 free file sharing tools with no sign-up required. Send files instantly in 2026.',
     date: 'April 19, 2026',
