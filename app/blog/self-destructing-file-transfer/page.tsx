@@ -13,7 +13,8 @@ import {
   UserX,
   Share2,
   CheckCircle2,
-  Smartphone
+  Smartphone,
+  Globe
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -196,15 +197,15 @@ export default function SelfDestructingFileTransferPost() {
             <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
               <CheckCircle2 className="text-green-500 w-5 h-5 shrink-0" />
               <span>Lawyers sharing confidential contracts</span>
-            </li>
+            </div>
             <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
               <CheckCircle2 className="text-green-500 w-5 h-5 shrink-0" />
               <span>Doctors sending sensitive test results</span>
-            </li>
+            </div>
             <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-100 dark:border-slate-700">
               <CheckCircle2 className="text-green-500 w-5 h-5 shrink-0" />
               <span>Journalists protecting source data</span>
-            </li>
+            </div>
           </div>
 
           <h2 className="text-3xl font-black mt-16 mb-12 text-center uppercase tracking-tighter">QuickTransfer vs Competitors</h2>
