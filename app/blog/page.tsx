@@ -11,6 +11,15 @@ export const metadata = {
 
 const blogPosts = [
   {
+    slug: 'expiring-file-sharing',
+    title: "How to Share Files With Expiry Dates (Links That Auto-Expire in 2026)",
+    excerpt: "Want to share files that automatically expire? Learn how to set expiration dates on shared files to protect your privacy and prevent unauthorized access.",
+    date: 'May 1, 2026',
+    readTime: '6 min read',
+    category: 'Security',
+    image: 'https://images.unsplash.com/photo-1508921334179-46344b5d6342?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
     slug: 'are-my-files-actually-deleted',
     title: "Are My Shared Files Actually Deleted? The Shocking Truth (2026)",
     excerpt: "When you delete a shared file, is it really gone? The truth might surprise you. Learn how file deletion actually works and which tools guarantee permanent deletion.",
