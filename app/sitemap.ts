@@ -42,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/blog/anonymous-file-sharing`,
+      lastModified: new Date('2026-04-28'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/download`,
       lastModified: now,
       changeFrequency: 'monthly',

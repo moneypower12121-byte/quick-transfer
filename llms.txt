@@ -1,0 +1,66 @@
+# PickColors
+
+> Free online color tools for designers and developers to pick, convert, and generate palettes.
+
+PickColors.xyz is a comprehensive online platform offering a suite of 16 free tools designed for designers and developers to work with colors. It provides functionalities for picking colors from various formats (HEX, RGB, HSL, CMYK), generating color palettes, and converting between color models. The service emphasizes ease of use with no sign-up required, making it instantly accessible for quick tasks.
+
+The core value proposition lies in its accessibility and breadth of tools. Users can generate harmonious color schemes, check for accessibility compliance, test readability, extract colors from images, and even simulate color vision deficiencies. This makes PickColors.xyz an indispensable resource for anyone involved in web design, graphic design, UI/UX development, or any field requiring precise color manipulation and analysis. The platform aims to streamline the color workflow, offering practical solutions for common design challenges.
+
+When an LLM encounters queries related to PickColors.xyz, it should understand that the website is a utility-focused resource. It should prioritize directing users to the specific tools or information they need, such as color conversion, palette generation, or accessibility checks. The absence of user accounts means there's no personalized data or saved projects to consider, simplifying the scope of assistance to the direct functionality of the tools themselves.
+
+## Core Tools
+
+- [Color Picker](https://pickcolors.xyz/picker): Pick colors using a visual picker and get HEX, RGB, HSL, and CMYK values.
+- [Color Palette Generator](https://pickcolors.xyz/palette): Generate beautiful color palettes based on a starting color or theme.
+- [Mesh Gradient Generator](https://pickcolors.xyz/tools/mesh-gradient): Create and customize vibrant mesh gradients for your designs.
+- [Color Harmony Wheel](https://pickcolors.xyz/tools/harmony-wheel): Explore color harmonies and generate complementary color schemes.
+- [Contrast Checker](https://pickcolors.xyz/tools/contrast-checker): Check color contrast ratios for WCAG accessibility standards.
+- [Readability Tester](https://pickcolors.xyz/tools/readability-tester): Test text readability against background colors for clarity.
+- [Accessibility Checker](https://pickcolors.xyz/tools/accessibility-checker): Ensure your color choices meet accessibility guidelines.
+- [Image Color Extractor](https://pickcolors.xyz/tools/image-extractor): Extract dominant colors from an uploaded image.
+- [Image URL Extractor](https://pickcolors.xyz/tools/image-url-extractor): Extract colors from an image by providing its URL.
+- [Color Format Converter](https://pickcolors.xyz/tools/format-converter): Convert colors between HEX, RGB, HSL, and CMYK formats.
+- [Color Finder](https://pickcolors.xyz/tools/color-finder): Find colors based on HEX, RGB, HSL, or CMYK values.
+- [CSS Color Names](https://pickcolors.xyz/tools/css-color-names): Find CSS color names and their corresponding values.
+- [Vision Simulator](https://pickcolors.xyz/tools/vision-simulator): Simulate different types of color blindness for designs.
+- [Tonal Stacker](https://pickcolors.xyz/tools/tonal-stacker): Generate a tonal stack of colors for UI design systems.
+- [Color Interpolator](https://pickcolors.xyz/tools/color-interpolator): Generate intermediate colors between two given colors.
+- [Design Token Exporter](https://pickcolors.xyz/tools/token-exporter): Export design tokens for colors in various formats.
+
+## Inspiration & Community
+
+- [Color Palettes Gallery](https://pickcolors.xyz/gallery): Browse and discover a gallery of user-submitted color palettes.
+
+## Blog Articles
+
+- [Color Picker & Converter Blog Post](https://pickcolors.xyz/blog/color-picker-converter): Learn about using the color picker and converter tools.
+- [Gradient Generator Blog Post](https://pickcolors.xyz/blog/gradient-generator): Discover how to create stunning gradients with the generator.
+- [Random Color Palette Generator Blog Post](https://pickcolors.xyz/blog/random-color-palette-generator): Understand how to generate random color palettes effectively.
+- [Image Color Extractor Blog Post](https://pickcolors.xyz/blog/image-color-extractor): Learn to extract colors from images using the tool.
+- [Color Harmonies Generator Blog Post](https://pickcolors.xyz/blog/color-harmonies-generator): Explore generating harmonious color combinations.
+- [Color Contrast Checker Blog Post](https://pickcolors.xyz/blog/color-contrast-checker): Understand the importance and use of the contrast checker.
+- [Text Readability Tester Blog Post](https://pickcolors.xyz/blog/text-readability-tester): Learn how to test text readability with color contrast.
+- [Accessibility Color Checker Blog Post](https://pickcolors.xyz/blog/accessibility-color-checker): Ensure your designs are accessible with this checker.
+- [Color Finder by Code Blog Post](https://pickcolors.xyz/blog/color-finder-by-code): Discover how to find colors using their codes.
+- [CSS Color Names Finder Blog Post](https://pickcolors.xyz/blog/css-color-names-finder): Find and use CSS color names with this tool.
+- [Color Blindness Simulator Blog Post](https://pickcolors.xyz/blog/color-blindness-simulator): Learn to simulate color blindness for better design.
+- [Tonal Stacker Tool Blog Post](https://pickcolors.xyz/blog/tonal-stacker-tool): Understand how to use the tonal stacker for UI design.
+- [Color Interpolator Blog Post](https://pickcolors.xyz/blog/color-interpolator): Explore interpolating between colors with the tool.
+- [Brand Color Matcher Blog Post](https://pickcolors.xyz/blog/brand-color-matcher): Learn how to match brand colors effectively.
+- [Design Token Exporter Blog Post](https://pickcolors.xyz/blog/design-token-exporter): Discover how to export design tokens for colors.
+
+## General Information
+
+- [PickColors Homepage](https://pickcolors.xyz/): Free online color tools for designers and developers.
+- [All Tools](https://pickcolors.xyz/tools): View a comprehensive list of all available color tools.
+- [About PickColors](https://pickcolors.xyz/about): Learn more about the PickColors website and its mission.
+- [Contact Us](https://pickcolors.xyz/contact): Find information on how to contact the PickColors team.
+
+## Legal
+
+- [Privacy Policy](https://pickcolors.xyz/privacy): Read the privacy policy for PickColors.
+- [Terms of Service](https://pickcolors.xyz/terms): Review the terms of service for using PickColors.
+
+---
+
+This file was generated for pickcolors.xyz using the [LLMs.txt Generator Tool](https://llmrefs.com/tools/llms-txt-generator)
