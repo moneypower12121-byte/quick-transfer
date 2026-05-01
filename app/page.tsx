@@ -5,8 +5,59 @@ import { Rocket, Shield, Clock, Smartphone, FileUp, Zap } from 'lucide-react';
 export const dynamic = "force-static";
 
 export default function Page() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is QuickTransfer free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, QuickTransfer is 100% free with no hidden subscriptions or data collection.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an account to send files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No account needed. Just upload your file, get a 6-digit code, and share it with the recipient.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "What is the maximum file size?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can share files up to 100MB per transfer for free.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "How long do transfer codes last?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Codes expire in 10 minutes by default to keep your data private and secure.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "How to send files without login?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can use QuickTransfer to send files instantly without creating an account. Simply upload your file, receive a 6-digit code, and share it with the recipient.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-24 pb-12 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-1/4 -left-20 w-64 h-64 bg-red-100 dark:bg-red-500/10 rounded-full blur-3xl opacity-50 -z-10 animate-pulse" />

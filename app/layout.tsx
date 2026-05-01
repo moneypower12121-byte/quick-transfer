@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   // ── Core ──────────────────────────────────────────────────────────────────
   title: "QuickTransfer - Send Files Free, No Sign-Up",
   description:
-    "Share files online instantly — no account, no hassle. QuickTransfer lets you send documents, photos & videos securely in seconds. Try it free now.",
+    "Share files online instantly — no account, no hassle. QuickTransfer lets you send documents, photos \u0026 videos securely in seconds. Try it free now.",
   keywords:
     "send files online, free file transfer, no sign up, share files online instantly, secure file transfer, send large files, no login, file sharing online, data transfer, free file upload, link transfer, files between devices",
   authors: [{ name: "QuickTransfer" }],
@@ -67,7 +67,7 @@ export const viewport: Viewport = {
   themeColor: "#ef4444",
 };
 
-// ── JSON-LD Schema ─────────────────────────────────────────────────────────────
+// ── JSON-LD Schema (WebApplication Only) ──────────────────────────────────────
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -96,52 +96,7 @@ const jsonLd = {
         ratingValue: "4.8",
         ratingCount: "1250",
       },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "Is QuickTransfer free to use?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Yes, QuickTransfer is 100% free with no hidden subscriptions or data collection.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Do I need an account to send files?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "No account needed. Just upload your file, get a 6-digit code, and share it with the recipient.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "What is the maximum file size?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "You can share files up to 100MB per transfer for free.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How long do transfer codes last?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Codes expire in 10 minutes by default to keep your data private and secure.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "How to send files without login?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "You can use QuickTransfer to send files instantly without creating an account. Simply upload your file, receive a 6-digit code, and share it with the recipient.",
-          },
-        },
-      ],
-    },
+    }
   ],
 };
 
